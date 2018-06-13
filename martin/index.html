@@ -7,14 +7,19 @@
   
   <body>
 	  <bold><h1><font color="crimson">LBH</font></h1></bold><br/>
-	  <h2><center>Bienvenue sur notre page reservée aux resultats des analyses médicales!</center></h2><hr/><br/>
-	  <p id="para1">Veuillez entrer vos identifiants svp</p>
+	  <h2><center>Bienvenue sur notre page reservée aux analyses médicales!</center></h2><hr/><br/>
+	  <p id="para1">Veuillez choisir une methode de travail svp</p>
 	  
-  	<form method="post" action="cgi/examens.cgi" enctype="multipart/form-data" >	
-		<input type="text" name="username" placeholder="Utilisateur" rows="2" cols="150" >
-		<input type="password" name="password" placeholder="Mot de passe" rows="2" cols="150" ><br/>
+  	<form method="post" action="cgi/operation.cgi" enctype="multipart/form-data" >	
+		<input type="radio" id="consult"
+			 name="choix" value="consultation">
+			<label for="consult">Consulter les resultats </label><br/>
 		
-		<INPUT type="submit" value="Connexion"> <br/><!---pour se connecter --->
+		<input type="radio" id="insert"
+			 name="choix" value="insertion">
+			<label for="insert">Introduire des nouvelles données </label><br/>
+		
+		<input type="submit" value="Connexion"> <br/><!---pour se connecter --->
 	</FORM>
   </body>
 </html>
