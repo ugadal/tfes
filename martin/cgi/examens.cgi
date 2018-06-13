@@ -66,7 +66,7 @@ B=""" <html>
 	  
 		<body>
 		  
-		<form method="post" action="../accueil.html" enctype="multipart/form-data" >	
+		<form method="post" action="/tfes/martin/" enctype="multipart/form-data" >	
 			
 			<INPUT type="submit" value="Ici"> <br/><!---pour se connecter --->
 		</FORM>
