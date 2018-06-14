@@ -28,6 +28,19 @@ print """<center ><h1><font color='green'>Les examens medicaux de l'IMPM </font>
 print hr
 
 
+import sqlite3;
+
+C=sqlite3.connect("db/example.db")
+c=C.cursor()
+c.execute("select nom,prenom,id from bacteriologie;")
+b=c.fetchall()
+	
+print b
+	
+print hr
+
+
+# A permet l'insertion des donnees
 A= '''<form  action="fiche_paillasse.cgi" enctype="multipart/form-data">
 			
 		  <p><font color="blue">Veuillez selectionner un type d'examen svp :</font></p>
@@ -55,7 +68,7 @@ A= '''<form  action="fiche_paillasse.cgi" enctype="multipart/form-data">
 			<input type="hidden" name="username" value="%s">
 		</form>'''
 		
-		
+# B Permet la consultation des donnees		
 B='''<form action="base.cgi" enctype="multipart/form-data">
 	
   <p><font color="blue">Veuillez selectionner un type d'examen svp :</font></p>

@@ -31,33 +31,33 @@ print "<hr/>"
 
 
 
-
-
-
-
-
-
-import pymysql
+import sqlite3;
 
 if exam=="bacterio":
 	print """<h2><i><font color="blue">RESULTAT DES FICHES DE PAILLASE (BACTERIOLOGIE)</font></i></h2><br/>"""
 	
-	C=pymysql.connect("localhost","root","zz","bacterio")
+	#~ C=sqlite3.connect("martin/cgi/db/example.db")
+	C=sqlite3.connect("db/example.db")
 	c=C.cursor()
 	
-	base="bacterio"
-
-	li1=[]
-	c.execute("describe patient")
-	D=c.fetchall()
-	for j in D:
-		li1.append(j[0])
+	base="bacteriologie"
+	
+	#~ li1=[]
+	#~ c.execute(""" describe bacteriologie; """)
+	#~ D=c.fetchall()
+	
+	#~ 
+	
+	#~ for j in D:
+		#~ li1.append(j[0])
 
 	print "<br/>"
 	print "<br/>"
 
-	c.execute("select * from patient ORDER BY id DESC")
+	c.execute("select * from bacteriologie ORDER BY id DESC;")
 	b=c.fetchall()
+	
+	c.close()
 	
 	print """<meta charset="UTF-8">
 	<p>Afficher le resultat en fonction de l'ID ou du Nom</p>
@@ -84,11 +84,11 @@ if exam=="bacterio":
 elif exam=="biochimie":
 	print """<h2><i><font color="blue">RESULTAT DES FICHES DE PAILLASE (BIOCHIMIE)</font></i></h2><br/>"""
 	
-	C=pymysql.connect("localhost","root","zz","biochimie")
+	C=sqlite3.connect("martin/cgi/db/example.db")
 	c=C.cursor()
 
 	li1=[]
-	c.execute("describe patient")
+	c.execute("describe biochimie")
 	D=c.fetchall()
 	for j in D:
 		li1.append(j[0])
@@ -96,7 +96,7 @@ elif exam=="biochimie":
 	print "<br/>"
 	print "<br/>"
 
-	c.execute("select * from patient ORDER BY id DESC")
+	c.execute("select * from biochimie ORDER BY id DESC")
 	b=c.fetchall()
 	
 	
@@ -125,11 +125,12 @@ elif exam=="biochimie":
 
 elif exam=="hemato":
 	print """<h2><i><font color="blue">RESULTAT DES FICHES DE PAILLASE (PARASITOLOGIE / HEMATOLOGIE)</font></i></h2><br/>"""
-	C=pymysql.connect("localhost","root","zz","parasito_hemato")
+	
+	C=sqlite3.connect("martin/cgi/db/example.db")
 	c=C.cursor()
 
 	li1=[]
-	c.execute("describe patient")
+	c.execute("describe parasito_hematologie")
 	D=c.fetchall()
 	for j in D:
 		li1.append(j[0])
@@ -138,7 +139,7 @@ elif exam=="hemato":
 	print "<br/>"
 	print "<br/>"
 
-	c.execute("select * from patient ORDER BY id DESC")
+	c.execute("select * from parasito_hematologie ORDER BY id DESC")
 	b=c.fetchall()
 	
 	base="parasito_hemato"
@@ -162,42 +163,24 @@ elif exam=="hemato":
 	</fieldset> <br/>
 	
 	"""%base
-	
-
-
-#~ elif exam=="parasito":
-	#~ C=pymysql.connect("localhost","root","zz","parasitologie")
-	#~ c=C.cursor()
-
-	#~ li1=[]
-	#~ c.execute("describe patient")
-	#~ D=c.fetchall()
-	#~ for j in D:
-		#~ li1.append(j[0])
-
-	#~ print "<br/>"
-	#~ print "<br/>"
-
-	#~ c.execute("select * from patient ORDER BY id DESC")
-	#~ b=c.fetchall()
 
 
 elif exam=="immuno":
 	print """<h2><i><font color="blue">RESULTAT DES FICHES DE PAILLASE (IMMUNO/SEROLOGIE)</font></i></h2><br/>"""
-	C=pymysql.connect("localhost","root","zz","immuno_serologie")
+	
+	C=sqlite3.connect("martin/cgi/db/example.db")
 	c=C.cursor()
 
 	li1=[]
-	c.execute("describe patient")
+	c.execute("describe immuno_serologie")
 	D=c.fetchall()
 	for j in D:
 		li1.append(j[0])
-		#~ print j[0], "  || "
 
 	print "<br/>"
 	print "<br/>"
 
-	c.execute("select * from patient ORDER BY id DESC")
+	c.execute("select * from immuno_serologie ORDER BY id DESC")
 	b=c.fetchall()
 	
 	base="immuno_serologie"
@@ -234,17 +217,7 @@ else:
 	<input type="hidden" name="username" value="%s">
 
 	"""%username
-
-
-
-
-#~ for row in b:
-	#~ for i in range(len(row)):
-		#~ print li1[i],"=", row[i], "<br/>"
-		
-	#~ print "<br/><br/><br/><br/>"
-
-
+	
 print """ <body style="background-color:#FBEFF2;"><center> """
 
 for row in b:
@@ -260,27 +233,205 @@ for row in b:
 print """</center></body>"""	
 
 
+
+	
+	
+#~ import pymysql
+
+#~ if exam=="bacterio":
+	#~ print """<h2><i><font color="blue">RESULTAT DES FICHES DE PAILLASE (BACTERIOLOGIE)</font></i></h2><br/>"""
+	
+	#~ C=pymysql.connect("localhost","root","zz","bacterio")
+	#~ c=C.cursor()
+	
+	#~ base="bacterio"
+
+	#~ li1=[]
+	#~ c.execute("describe patient")
+	#~ D=c.fetchall()
+	#~ for j in D:
+		#~ li1.append(j[0])
+
+	#~ print "<br/>"
+	#~ print "<br/>"
+
+	#~ c.execute("select * from patient ORDER BY id DESC")
+	#~ b=c.fetchall()
+	
+	#~ print """<meta charset="UTF-8">
+	#~ <p>Afficher le resultat en fonction de l'ID ou du Nom</p>
+	#~ <form action="speciale_base.cgi" enctype="multipart/form-data">
+	#~ <fieldset>
+	
+	#~ <input type="radio" id="bac"
+     #~ name="val" value="ID">
+    #~ <label for="bac">ID</label><br/>
+
+    #~ <input type="radio" id="bio"
+     #~ name="val" value="nom">
+    #~ <label for="bio">nom</label><br/>
+	
+	#~ <input type="number" name="id" placeholder="id">	
+	#~ <input type="text" name="nom" value="" placeholder="Nom"><br/>
+	#~ <button type="submit">Rechercher</button>
+	#~ <input type="hidden" name="type_examen" value="%s">
+	#~ </fieldset> <br/>
+	
+	#~ """%base
+
+
+#~ elif exam=="biochimie":
+	#~ print """<h2><i><font color="blue">RESULTAT DES FICHES DE PAILLASE (BIOCHIMIE)</font></i></h2><br/>"""
+	
+	#~ C=pymysql.connect("localhost","root","zz","biochimie")
+	#~ c=C.cursor()
+
+	#~ li1=[]
+	#~ c.execute("describe patient")
+	#~ D=c.fetchall()
+	#~ for j in D:
+		#~ li1.append(j[0])
+
+	#~ print "<br/>"
+	#~ print "<br/>"
+
+	#~ c.execute("select * from patient ORDER BY id DESC")
+	#~ b=c.fetchall()
+	
+	
+	#~ base="biochimie"
+	#~ print """<meta charset="UTF-8">
+	#~ <p>Afficher le resultat en fonction de l'ID ou du nom</p>
+	#~ <form action="speciale_base.cgi" enctype="multipart/form-data">
+	#~ <fieldset>
+	
+	#~ <input type="radio" id="bac"
+     #~ name="val" value="ID">
+    #~ <label for="bac">ID</label><br/>
+
+    #~ <input type="radio" id="bio"
+     #~ name="val" value="nom">
+    #~ <label for="bio">nom</label><br/>
+	
+	#~ <input type="number" name="id" placeholder="id">	
+	#~ <input type="text" name="nom" value="" placeholder="Nom"><br/>
+	#~ <button type="submit">Rechercher</button>
+	#~ <input type="hidden" name="type_examen" value="%s">
+	#~ </fieldset> <br/>
+	
+	#~ """%base
+
+
+#~ elif exam=="hemato":
+	#~ print """<h2><i><font color="blue">RESULTAT DES FICHES DE PAILLASE (PARASITOLOGIE / HEMATOLOGIE)</font></i></h2><br/>"""
+	#~ C=pymysql.connect("localhost","root","zz","parasito_hemato")
+	#~ c=C.cursor()
+
+	#~ li1=[]
+	#~ c.execute("describe patient")
+	#~ D=c.fetchall()
+	#~ for j in D:
+		#~ li1.append(j[0])
+
+	#~ print "<br/>"
+	#~ print "<br/>"
+
+	#~ c.execute("select * from patient ORDER BY id DESC")
+	#~ b=c.fetchall()
+	
+	#~ base="parasito_hemato"
+	#~ print """<meta charset="UTF-8">
+	#~ <p>Afficher le resultat en fonction de l'ID ou du nom</p>
+	#~ <form action="speciale_base.cgi" enctype="multipart/form-data">
+	#~ <fieldset>
+	
+	#~ <input type="radio" id="bac"
+     #~ name="val" value="ID">
+    #~ <label for="bac">ID</label><br/>
+
+    #~ <input type="radio" id="bio"
+     #~ name="val" value="nom">
+    #~ <label for="bio">nom</label><br/>
+	
+	#~ <input type="number" name="id" placeholder="id">	
+	#~ <input type="text" name="nom" value="" placeholder="Nom"><br/>
+	#~ <button type="submit">Rechercher</button>
+	#~ <input type="hidden" name="type_examen" value="%s">
+	#~ </fieldset> <br/>
+	
+	#~ """%base
+
+
+#~ elif exam=="immuno":
+	#~ print """<h2><i><font color="blue">RESULTAT DES FICHES DE PAILLASE (IMMUNO/SEROLOGIE)</font></i></h2><br/>"""
+	#~ C=pymysql.connect("localhost","root","zz","immuno_serologie")
+	#~ c=C.cursor()
+
+	#~ li1=[]
+	#~ c.execute("describe patient")
+	#~ D=c.fetchall()
+	#~ for j in D:
+		#~ li1.append(j[0])
+
+	#~ print "<br/>"
+	#~ print "<br/>"
+
+	#~ c.execute("select * from patient ORDER BY id DESC")
+	#~ b=c.fetchall()
+	
+	#~ base="immuno_serologie"
+	#~ print """<meta charset="UTF-8">
+	#~ <p>Afficher le resultat en fonction de l'ID ou du nom</p>
+	#~ <form action="speciale_base.cgi" enctype="multipart/form-data">
+	#~ <fieldset>
+	
+	#~ <input type="radio" id="bac"
+     #~ name="val" value="ID">
+    #~ <label for="bac">ID</label><br/>
+
+    #~ <input type="radio" id="bio"
+     #~ name="val" value="nom">
+    #~ <label for="bio">nom</label><br/>
+	
+	#~ <input type="number" name="id" placeholder="id">	
+	#~ <input type="text" name="nom" value="" placeholder="Nom"><br/>
+	#~ <button type="submit">Rechercher</button>
+	#~ <input type="hidden" name="type_examen" value="%s">
+	#~ </fieldset> <br/>
+	
+	#~ """%base
+	
+	
+#~ else:
+	#~ print """
+	#~ <p><b><font color="red">Vous n'avez pas selectionne un examen. 
+	#~ Cliquez sur Ici pour choisir un examen</font></b></p>"""
+	
+	#~ print """
+	#~ <form action="base_examen.cgi" enctype="multipart/form-data">
+	#~ <button type="submit">Ici</button>
+	#~ <input type="hidden" name="username" value="%s">
+
+	#~ """%username
+
+
+
+
+#~ print """ <body style="background-color:#FBEFF2;"><center> """
+
 #~ for row in b:
 	#~ print "<caption>Resultat %s </caption>"%exam
 	#~ print "<table border=2 cellspacing=5 cellpadding=2>"
-	
+	#~ print "<tr>"
 	#~ for i in range(len(row)):
-		
-		#~ print "<tr>"
-		#~ for j in range(len(li1)):
-			#~ print """<th style="background-color:powderblue;">""",li1[j],"</th>"
-		#~ print "</tr>"
-	
-	#~ for z in range(len(row)):
-		#~ print "<tr>"
-			
-		#~ print """<td style="background-color:#00FF80;">""", row[z],"</td>"
-	#~ print "</tr>"
+		#~ print """<th style="background-color:powderblue;">""",li1[i],"</th>","""<td style="background-color:#00FF80;">""", row[i],"</td>","</tr>"
 	
 	#~ print "</table>"	
 	#~ print "<br/><br/><br/><br/>"
 
 #~ print """</center></body>"""	
+
+
 
 	
 
