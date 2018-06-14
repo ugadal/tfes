@@ -39,7 +39,7 @@ br="<br/>"
 
 
 print """<h1><font color="#BD8D46">LBH</font></h1>"""
-print """ <h2 align="right"> Bonjour %s !</h2>"""%username
+print """ <h2 align="right"> Bonjour!</h2>"""
 
 print hr
 print """<center style="background-color:#D0A9F5;><h1><font color='green'>Les examens medicaux de l'IMPM </font></h1></center>"""
@@ -55,12 +55,16 @@ import sqlite3;
 
 C=sqlite3.connect("db/example.db")
 
-#reseau,nom d'utilisateur,mot de passe,nom de la base de donnee)
 c=C.cursor()
+
+#~ c.execute(" .schema example.bacteriologie ")
+#~ o=c.fetchall()
+#~ print o
+
 c.execute("select count(nom) from bacteriologie")
 b=int(c.fetchall()[0][0])
 
-c.execute("INSERT INTO bacteriologie(nom,prenom,age,sexe,dat_jour,type_examen,macroscopie,etat_frais,comptage_cellules,coloration_gram,coloration_ziehl,milieu_culture,observation,conclusion) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?);",(nom,prenom,age,sexe,dat,type_examen,macroscopie,etat_frais,comptage_cellules,coloration_gram,coloration_ziehl,milieu_culture,observation,conclusion))
+c.execute("INSERT INTO bacteriologie(id,nom,prenom,age,sexe,dat_jour,type_examen,macroscopie,etat_frais,comptage_cellules,coloration_gram,coloration_ziehl,milieu_culture,observation,conclusion) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);",(1,nom,prenom,age,sexe,dat,type_examen,macroscopie,etat_frais,comptage_cellules,coloration_gram,coloration_ziehl,milieu_culture,observation,conclusion))
 
 c.execute("select count(nom) from bacteriologie")
 R=int(c.fetchall()[0][0])

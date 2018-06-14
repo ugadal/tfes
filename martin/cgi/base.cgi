@@ -42,14 +42,18 @@ if exam=="bacterio":
 	
 	base="bacteriologie"
 	
-	#~ li1=[]
-	#~ c.execute(""" describe bacteriologie; """)
-	#~ D=c.fetchall()
+
+	li1=[]
 	
-	#~ 
+	c.execute(".schema bacteriologie;")
 	
-	#~ for j in D:
-		#~ li1.append(j[0])
+	D=c.fetchall()
+	
+	
+	print D
+	
+	for j in D:
+		li1.append(j[0])
 
 	print "<br/>"
 	print "<br/>"
