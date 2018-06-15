@@ -20,6 +20,7 @@ quartier=str(dataform.getvalue("quartier"))
 tel=str(dataform.getvalue("tel"))
 email=str(dataform.getvalue("email"))
 
+
 #~ nom=dataform.getvalue("nom")
 #~ prenom=dataform.getvalue("prenom")
 #~ sexe=dataform.getvalue("sexe")
@@ -46,10 +47,19 @@ print hr
 import sqlite3
 C = sqlite3.connect('db/impm.db')
 c = C.cursor()
+#~ c.execute ("""insert into patient(nom,prenom,sexe,age,ville,quartier,tel,email) VALUES(?,?,?,?,?,?,?,?)""",(nom,prenom,sexe,age,ville,quartier,tel,email))
+c.execute ("""insert into patient(nom,prenom,sexe,age,ville,quartier,tel,email) 
+VALUES(?,?,?,?,?,?,?,?);""",("Leoca","solange","F",33,"Mons","Jemappes","565556554","leoca@yahoo.fr"))
 
-c.execute("""insert into patient (nom,prenom,sexe,age,ville,quartier,tel,email) VALUES (?,?,?,?,?,?,?,?)""", (nom,prenom,sexe,age,ville,quartier,tel,email))
 
-C.commit()
+c.execute('select * from patient')
+
+for i in c:
+    print "\n"
+    for j in i:
+        print j
+
+
 ####################################################################################################################################
 print "moi"
 

@@ -24,6 +24,7 @@ AddEntry('Deudjui','martin','M',33,'Mouscron','Dottignies',"0465513010","deudjui
 AddEntry('Deker','patrick','M',17,'Mons','Caregnon',"0410564567","exemple@yahoo.com")
 AddEntry('Ben','charlie','M',45,'Namur','Coin',"0410564567","exemple@yahoo.com")
 AddEntry('Van','charlotte','F',23,'Bruxelles','Molemberk', "0410564567","exemple@yahoo.com")
+AddEntry('Albert','charle','F',23,'Bruxelles','Molemberk', "0410564567","exemple@yahoo.com")
 
 C.commit()
 
@@ -34,4 +35,4 @@ for i in c:
     for j in i:
         print j
 
-c.close()
+

@@ -77,7 +77,7 @@ print '''<meta charset="UTF-8">
                  <select type="select" name="sexe">
                  <option value="Sexe" selected disabled>Sexe du patient</option>
                  <option value="F">Feminin</option>
-                 <option value="F">Masculin</option>
+                 <option value="M">Masculin</option>
                  </select>
                  <input type="tel" pattern="[0-9-() ]*" name="age"   value=""  aria-required="true"  role="textbox" aria-multiline="false" placeholder="Age" aria-label="age"  minlength="1" maxlength="3">
                 <br/>
