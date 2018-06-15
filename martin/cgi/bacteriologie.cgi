@@ -22,7 +22,7 @@ br="<br/>"
 
 
 print """<h1><font color="#BD8D46">LBH</font></h1>"""
-#~ print """ <h2 align="right"> Bonjour %s !</h2>"""%username
+print """ <h2 align="right"> Bonjour %s !</h2>"""%username
 
 print hr
 print """<center ><h1><font color='green'>Les examens medicaux de l'IMPM </font></h1></center>"""
