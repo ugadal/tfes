@@ -27,26 +27,16 @@ print hr
 print """<center ><h1><font color='green'>Les examens medicaux de l'IMPM </font></h1></center>"""
 print hr
 
-
-import sqlite3;
-
-C=sqlite3.connect("db/example.db")
-c=C.cursor()
-c.execute("select nom,prenom,id from bacteriologie;")
-b=c.fetchall()
-	
-print b
-	
 print hr
 
 
 # A permet l'insertion des donnees
-A= '''<form  action="fiche_paillasse.cgi" enctype="multipart/form-data">
+A= '''<form  action="patient.cgi" enctype="multipart/form-data">
 			
 		  <p><font color="blue">Veuillez selectionner un type d'examen svp :</font></p>
 		  
 			<input type="radio" id="bac"
-			 name="exam" value="bacterio">
+			 name="exam" value="bacteriologie">
 			<label for="bac">Bacteriologie</label><br/>
 
 			<input type="radio" id="bio"
@@ -54,18 +44,17 @@ A= '''<form  action="fiche_paillasse.cgi" enctype="multipart/form-data">
 			<label for="bio">Biochimie</label><br/>
 
 			<input type="radio" id="hema"
-			 name="exam" value="hemato">
+			 name="exam" value="hemato_parasitologie">
 			<label for="hema">Parasito /Hematologie</label><br/>
 			
 			<input type="radio" id="immuno"
-			 name="exam" value="immuno">
+			 name="exam" value="immuno_serologie">
 			<label for="immuno">Immuno-serologie</label><br/>
 			
 		  
 			
 			<button type="submit">Suivant</button>
 			
-			<input type="hidden" name="username" value="%s">
 		</form>'''
 		
 # B Permet la consultation des donnees		
@@ -92,7 +81,6 @@ B='''<form action="base.cgi" enctype="multipart/form-data">
     
     <button type="submit">Envoyer</button>
     
-    <input type="hidden" name="username" value="%s">
 </form>'''
 
 
