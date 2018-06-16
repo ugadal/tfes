@@ -20,16 +20,6 @@ quartier=str(dataform.getvalue("quartier"))
 tel=str(dataform.getvalue("tel"))
 email=str(dataform.getvalue("email"))
 
-
-#~ nom=dataform.getvalue("nom")
-#~ prenom=dataform.getvalue("prenom")
-#~ sexe=dataform.getvalue("sexe")
-#~ age=dataform.getvalue("age")
-#~ ville=dataform.getvalue("ville")
-#~ quartier=dataform.getvalue("quartier")
-#~ tel=dataform.getvalue("tel")
-#~ email=dataform.getvalue("email")
-
 exam=dataform.getvalue("exam")
 
 
@@ -47,21 +37,31 @@ print hr
 import sqlite3
 C = sqlite3.connect('db/impm.db')
 c = C.cursor()
-#~ c.execute ("""insert into patient(nom,prenom,sexe,age,ville,quartier,tel,email) VALUES(?,?,?,?,?,?,?,?)""",(nom,prenom,sexe,age,ville,quartier,tel,email))
 c.execute ("""insert into patient(nom,prenom,sexe,age,ville,quartier,tel,email) 
-VALUES(?,?,?,?,?,?,?,?);""",("Leoca","solange","F",33,"Mons","Jemappes","565556554","leoca@yahoo.fr"))
+VALUES(?,?,?,?,?,?,?,?)""", (nom,prenom,sexe,age,ville,quartier,tel,email))
+
+C.commit() 
+
+#~ try:
+	#~ c.execute ("""insert into patient(nom,prenom,sexe,age,ville,quartier,tel,email) 
+	#~ VALUES(?,?,?,?,?,?,?,?)""",(nom,prenom,sexe,age,ville,quartier,tel,email))
+
+#~ except sqlite3.OperationalError as e:
+	#~ print """Une erreur produite dans la requete : """ + str(e)
 
 
-c.execute('select * from patient')
 
-for i in c:
-    print "\n"
-    for j in i:
-        print j
+#~ c.execute('select * from patient')
+
+#~ for i in c:
+    #~ print "\n", br
+    #~ for j in i:
+        #~ print j
+	
 
 
 ####################################################################################################################################
-print "moi"
+
 
 
 
