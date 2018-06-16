@@ -13,7 +13,6 @@ print
 dataform=cgi.FieldStorage()
 choix=dataform.getvalue("choix")
 
-
 et="*"
 Me=et*200
 hr="<hr/>"
