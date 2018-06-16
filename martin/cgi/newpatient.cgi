@@ -26,7 +26,7 @@ exam=dataform.getvalue("exam")
 hr="<hr/>"
 br="<br/>"
 
-
+print '''<meta charset="UTF-8">'''
 print """<h1><font color="#BD8D46">LBH</font></h1>"""
 print """ <h2 align="right"> Bonjour!</h2>"""
 print hr
@@ -51,18 +51,25 @@ C.commit()
 
 
 
-#~ c.execute('select * from patient')
+c.execute("select id from patient where nom='%s' and prenom='%s' and sexe='%s' and age=%s and ville='%s' and quartier='%s' and tel='%s' and email='%s' "
+%(nom,prenom,sexe,age,ville,quartier,tel,email))
 
-#~ for i in c:
-    #~ print "\n", br
-    #~ for j in i:
-        #~ print j
+for i in c:
+    print "\n", br
+    for j in i:
+        ID_patient=j
 	
-
-
 ####################################################################################################################################
 
+Examen="""<b><font color="coral">Votre patient à bien été enregisté. Veuillez cliquer sur suivant pour continer</font></b><br/><br/>
+	<form name=mm action=%s.cgi method=post enctype="multipart/form-data">
+	<button type="submit">Suivant</button>
+	
+	<input type="hidden" name="ID_patient" value=%s>
 
+"""%(exam,ID_patient)
+
+print Examen
 
 
 

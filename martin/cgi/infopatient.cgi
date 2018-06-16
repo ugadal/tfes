@@ -18,5 +18,4 @@ type_examen=dataform.getvalue("exam")
 
 
 
-c.execute('''insert into patient(nom,prenom,sexe,age,ville,quartier,tel,email)
-VALUES (?,?,?,?,?,?,?,?)''',(nom,prenom,sexe,age,ville,quartier,tel,email)
+

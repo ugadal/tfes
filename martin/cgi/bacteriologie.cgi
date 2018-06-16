@@ -14,6 +14,7 @@ print
 dataform=cgi.FieldStorage()
 username=dataform.getvalue("username")
 type_examen=dataform.getvalue("examen")
+ID_patient=dataform.getvalue("ID_patient")
 
 et="*"
 Me=et*200
@@ -22,7 +23,7 @@ br="<br/>"
 
 
 print """<h1><font color="#BD8D46">LBH</font></h1>"""
-print """ <h2 align="right"> Bonjour %s !</h2>"""%username
+print """ <h2 align="right"> Bonjour!</h2>"""
 
 print hr
 print """<center ><h1><font color='green'>Les examens medicaux de l'IMPM </font></h1></center>"""
@@ -37,23 +38,6 @@ patbacte="""
 <meta charset="UTF-8">
 <form action="base_bacterio.cgi" enctype="multipart/form-data">
 
- <fieldset>
-                <input  type="text"  id="patientnom" name="nom" placeholder="Nom du patient" value="" maxlength="32"  >
-                <input  type="text"  id="patientprenom" name="prenom" placeholder="Prenom" aria-label="prenom" value="" maxlength="32" >
-                 
-                 <select type="select" name="sexe">
-                 <option value="Sexe" selected disabled>Sexe du patient</option>
-                 <option value="f">Feminin</option>
-                 <option value="m">Masculin</option>
-                 </select>
-                 <input type="text" id="age" name="age" value="Age" placeholder="Age"><br/>
- </fieldset>
- 
- <fieldset>
-	<input type="text" name="ville" value="" placeholder="ville">	
-	<input type="text" name="quartier" value="" placeholder="Quartier"><br/>
- </fieldset> 
- 
  <fieldset>
 	 <select name="mm" id="mois"  >
             <option value="" selected disabled>mois</option>
