@@ -12,6 +12,7 @@ print
 
 dataform=cgi.FieldStorage()
 ID_patient=dataform.getvalue("ID_patient")
+type_examen=dataform.getvalue("examen")
 
 et="*"
 Me=et*200
@@ -35,23 +36,6 @@ print """<h2><i><font color="blue">FICHE DE PAILLASE (BIOCHIMIE)</font></i></h2>
 biochimie="""
 <meta charset="UTF-8">
 <form  action="base_biochimie.cgi" enctype="multipart/form-data">
-
- <fieldset>
-                <input  type="text"  id="patientnom" name="nom" placeholder="Nom du patient" value="" maxlength="32"  >
-                <input  type="text"  id="patientprenom" name="prenom" placeholder="Prenom" aria-label="prenom" value="" maxlength="32" >
-                 
-                 <select type="select" name="sexe">
-                 <option value="Sexe" selected disabled>Sexe du patient</option>
-                 <option value="f">Feminin</option>
-                 <option value="m">Masculin</option>
-                 </select>
-                 <input type="text" id="age" name="age" value="Age" placeholder="Age"><br/>
- </fieldset>
- 
- <fieldset>
-	<input type="text" name="ville" value="" placeholder="ville">	
-	<input type="text" name="quartier" value="" placeholder="Quartier"><br/>
- </fieldset> 
  
  <fieldset>
 	 <select name="mm" id="mois"  >
@@ -89,19 +73,16 @@ biochimie="""
  <input type="text" name="I_mg" value="" placeholder="I_mg">
 
 </fieldset>
-
-
- <input type="text" name="email"  id="usernamereg-yid" placeholder="Adresse mail"
-            aria-label="Adresse mail" value="" maxlength="32"   ><br/><br/>
+<br/><br/>
        
        <button type="submit">Enregistrer</button>
     
-    <input type="hidden" name="username" value="%s">     
+    <input type="hidden" name="ID_patient" value="%s">     
     <input type="hidden" name="type_examen" value="%s">     
 
            
 </form>
-"""
+"""%(ID_patient,type_examen)
 
 
 

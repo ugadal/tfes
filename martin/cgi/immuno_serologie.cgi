@@ -12,7 +12,6 @@ print "Content-type:text/html"
 print
 
 dataform=cgi.FieldStorage()
-username=dataform.getvalue("username")
 type_examen=dataform.getvalue("examen")
 ID_patient=dataform.getvalue("ID_patient")
 
@@ -30,6 +29,7 @@ print """<center ><h1><font color='green'>Les examens medicaux de l'IMPM </font>
 print hr
 
 
+print ID_patient
 
 #################################################################################################################
 print """<h2><i><font color="blue">FICHE DE PAILLASE (IMMUNO-SEROLOGIE)</font></i></h2><br/>"""
@@ -71,19 +71,16 @@ immuno_sero="""
  <input type="text" name="widal" value="" placeholder="widal">
 
 </fieldset>
-
-
- <input type="text" name="email"  id="usernamereg-yid" placeholder="Adresse mail"
-            aria-label="Adresse mail" value="" maxlength="32"   ><br/><br/>
+<br/><br/>
        
        <button type="submit">Enregistrer</button>
     
-    <input type="hidden" name="username" value="%s">     
+    <input type="hidden" name="ID_patient" value="%s">     
     <input type="hidden" name="type_examen" value="%s">     
 
            
 </form>
-"""
+"""%(ID_patient,type_examen)
 
 ####################################################################################################################
 print immuno_sero

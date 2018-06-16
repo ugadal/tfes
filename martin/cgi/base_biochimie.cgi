@@ -10,13 +10,7 @@ print "Content-type:text/html"
 print
 
 dataform=cgi.FieldStorage()
-username=str(dataform.getvalue("username"))
-nom=str(dataform.getvalue("nom"))
-prenom=str(dataform.getvalue("prenom"))
-sexe=str(dataform.getvalue("sexe"))
-age=dataform.getvalue("age")
-ville=str(dataform.getvalue("ville"))
-quartier=str(dataform.getvalue("quartier"))
+ID_patient=dataform.getvalue("ID_patient")
 mm=dataform.getvalue("mm")
 dd=dataform.getvalue("dd")
 yyyy=dataform.getvalue("yyyy")
@@ -48,9 +42,9 @@ email=str(dataform.getvalue("email"))
 hr="<hr/>"
 br="<br/>"
 
-
+print '''<meta charset="UTF-8">'''
 print """<h1><font color="#BD8D46">LBH</font></h1>"""
-print """ <h2 align="right"> Bonjour %s !</h2>"""%username
+print """ <h2 align="right"> Bonjour !</h2>"""
 
 print hr
 print """<center style="background-color:#D0A9F5;><h1><font color='green'>Les examens medicaux de l'IMPM </font></h1></center>"""
@@ -62,26 +56,37 @@ print """<h2><i><font color="blue">FICHE DE PAILLASE (BIOCHIMIE)</font></i></h2>
 
 
 
-
-import pymysql
-C=pymysql.connect("localhost","root","zz","biochimie")
-#reseau,nom d'utilisateur,mot de passe,nom de la base de donnee)
+import sqlite3
+C = sqlite3.connect('db/impm.db')
 c=C.cursor()
-c.execute("select count(nom) from patient")
+
+c.execute("select count(ID_patient) from biochimie")
 b=int(c.fetchall()[0][0])
 
-c.execute("INSERT INTO patient(nom,prenom,age,sexe,ville,quartier,dat_jour,type_examen,S_uree,S_creat,S_gluc,S_ac_ur,S_chol_t,S_sdl,S_ldl,S_tg,E_got,E_gpt,I_na,I_k,I_cl,I_ca,I_mg,email,technicien) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);",(nom,prenom,age,sexe,ville,quartier,dat_jour,type_examen,S_uree,S_creat,S_gluc,S_ac_ur,S_chol_t,S_sdl,S_ldl,S_tg,E_got,E_gpt,I_na,I_k,I_cl,I_ca,I_mg,email,username))
+c.execute("""INSERT INTO biochimie(ID_patient,date,type_examen,S_uree,S_creat,S_gluc,S_ac_ur,S_chol_t,S_sdl,S_ldl,S_tg,E_got,E_gpt,I_na,I_k,I_cl,I_ca,I_mg) 
+VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
+""",(ID_patient,dat_jour,type_examen,S_uree,S_creat,S_gluc,S_ac_ur,S_chol_t,S_sdl,S_ldl,S_tg,E_got,E_gpt,I_na,I_k,I_cl,I_ca,I_mg))
 
-c.execute("select count(nom) from patient")
+C.commit() 
+
+c.execute("select count(ID_patient) from biochimie")
 R=int(c.fetchall()[0][0])
 if R>b:
-	print "Vos donnees ont ete bien enregistre<br/> Le Nombre de patient enregistre est de: <b> %s </b>"%R
+	print "Vos donnees ont ete bien enregistre<br/> Le Nombre de patient enregistre en biochimie est de: <b> %s </b>"%R
 else:
-	print """Vos donnees ne se sont pas enre
-	gistre, Veuillez recommencer"""
+	print """Vos donnees ne se sont pas enregistre, Veuillez recommencer"""
 
-c.execute("select * from patient")
-D=int(c.fetchall())
-print D
+print br,br,br,hr,br
+
+###################################
+print """
+	<p><b><font color="red">Vous avez terminé l'opération avec ce patient.<br/>
+	Cliquez sur Accueil pour revenir au point de depart</font></b></p>
+	<form action="../index.html" enctype="multipart/form-data">
+	<button type="submit">Accueil</button>
+	</form>
+"""
+
+
 
 

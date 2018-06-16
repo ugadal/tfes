@@ -9,35 +9,32 @@ print "Content-type:text/html"
 print
 
 dataform=cgi.FieldStorage()
-username=str(dataform.getvalue("username"))
-nom=str(dataform.getvalue("nom"))
-prenom=str(dataform.getvalue("prenom"))
-sexe=str(dataform.getvalue("sexe"))
-age=dataform.getvalue("age")
-ville=str(dataform.getvalue("ville"))
-quartier=str(dataform.getvalue("quartier"))
+
+ID_patient=dataform.getvalue("ID_patient")
 mm=dataform.getvalue("mm")
 dd=dataform.getvalue("dd")
 yyyy=dataform.getvalue("yyyy")
 
-dat="%s/%s/%s"%(yyyy,mm,dd)
+dat_jour="%s/%s/%s"%(yyyy,mm,dd)
 type_examen=str(dataform.getvalue("type_examen"))
 
 macroscopie=str(dataform.getvalue("macroscopie"))
 etat_frais=str(dataform.getvalue("etat_frais"))
 comptage_cellules=dataform.getvalue("comptage_cellules")
 coloration_gram=str(dataform.getvalue("coloration_gram"))
-coloration_ziehl=str(dataform.getvalue("cloration_ziehl"))
+coloration_ziehl=str(dataform.getvalue("coloration_ziehl"))
 milieu_culture=str(dataform.getvalue("milieu_culture"))
 observation=str(dataform.getvalue("observation"))
 conclusion=str(dataform.getvalue("conclusion"))
-email=str(dataform.getvalue("email"))
 
 
 hr="<hr/>"
 br="<br/>"
 
 
+
+
+print '''<meta charset="UTF-8">'''
 print """<h1><font color="#BD8D46">LBH</font></h1>"""
 print """ <h2 align="right"> Bonjour!</h2>"""
 
@@ -51,34 +48,39 @@ print """<h2><i><font color="blue">FICHE DE PAILLASE (BACTERIOLOGIE)</font></i><
 print hr
 
 
-import sqlite3;
-
-C=sqlite3.connect("db/example.db")
-
+import sqlite3
+C=sqlite3.connect("db/impm.db")
 c=C.cursor()
 
-#~ c.execute(" .schema example.bacteriologie ")
-#~ o=c.fetchall()
-#~ print o
 
-c.execute("select count(nom) from bacteriologie")
+c.execute("select count(ID_patient) from bacteriologie")
 b=int(c.fetchall()[0][0])
 
-c.execute("INSERT INTO bacteriologie(id,nom,prenom,age,sexe,dat_jour,type_examen,macroscopie,etat_frais,comptage_cellules,coloration_gram,coloration_ziehl,milieu_culture,observation,conclusion) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);",(1,nom,prenom,age,sexe,dat,type_examen,macroscopie,etat_frais,comptage_cellules,coloration_gram,coloration_ziehl,milieu_culture,observation,conclusion))
+c.execute("""INSERT INTO bacteriologie(ID_patient,date,type_examen,macroscopie,etat_frais,comptage_cellules,coloration_gram,coloration_ziehl,milieu_culture,observation,conclusion) 
+VALUES (?,?,?,?,?,?,?,?,?,?,?);
+""",(ID_patient,dat_jour,type_examen,macroscopie,etat_frais,comptage_cellules,coloration_gram,coloration_ziehl,milieu_culture,observation,conclusion))
 
-c.execute("select count(nom) from bacteriologie")
+C.commit() 
+
+
+c.execute("select count(ID_patient) from bacteriologie")
 R=int(c.fetchall()[0][0])
 if R>b:
-	print "Vos donnees ont ete bien enregistre<br/> Le Nombre de patient enregistre est de: <b> %s </b>"%R
+	print "Vos donnees ont ete bien enregistre<br/> Le Nombre de patient enregistre en bactériologie est de: <b> %s </b>"%R
 else:
-	print """Vos donnees ne se sont pas enre
-	gistre, Veuillez recommencer"""
-
-c.execute("select * from bacteriologie")
-D=int(c.fetchall())
-print D
+	print """Vos donnees ne se sont pas enregistre, Veuillez recommencer"""
 
 
+print br,br,br,hr,hr,br
+
+###################################
+print """
+	<p><b><font color="red">Vous avez terminé l'opération avec ce patient.<br/>
+	Cliquez sur Accueil pour revenir au point de depart</font></b></p>
+	<form action="../index.html" enctype="multipart/form-data">
+	<button type="submit">Accueil</button>
+	</form>
+"""
 
 
 

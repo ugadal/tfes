@@ -60,16 +60,13 @@ patbacte="""
  <input type="text" name="etat_frais" value="" placeholder="Etat frais">
  <input type="text" name="comptage_cellules" value="" placeholder="Comptage cellues"><br/>
  <input type="text" name="coloration_gram" value="" placeholder=" coloration_gram">
- <input type="text" name="cloration_ziehl" value="" placeholder=" Coloration_ziehl">
+ <input type="text" name="coloration_ziehl" value="" placeholder=" Coloration_ziehl">
  <input type="text" name="milieu_culture" value="" placeholder="Milieu de culture"><br/>
  <input type="text" name="observation" value="" placeholder="observation">
  <input type="text" name="conclusion" value="" placeholder="conclusion"><br/>
 
  </fieldset>
- 
-   
-     <input type="text" name="email"  id="usernamereg-yid" placeholder="Adresse mail"
-            aria-label="Adresse mail" value="Mail" maxlength="32"   ><br/><br/>
+<br/><br/>
        
        <button type="submit">Enregistrer</button>
     

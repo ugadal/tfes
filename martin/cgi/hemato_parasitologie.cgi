@@ -12,8 +12,9 @@ print "Content-type:text/html"
 print
 
 dataform=cgi.FieldStorage()
-username=dataform.getvalue("username")
 ID_patient=dataform.getvalue("ID_patient")
+type_examen=dataform.getvalue("examen")
+
 
 et="*"
 Me=et*200
@@ -31,9 +32,12 @@ print hr
 #################################################################################################################
 print """<h2><i><font color="blue">FICHE DE PAILLASE (PARASITOLOGIE / HEMATOLOGIE)</font></i></h2><br/>"""
 
+
+print """La valeur de l'ID_patient est de: %s """%ID_patient,br,br
+
 pathema="""
 <meta charset="UTF-8">
-<form action="parasito_hemato.cgi" enctype="multipart/form-data">
+<form action="base_hemato_parasitologie.cgi" enctype="multipart/form-data">
  
  <fieldset>
 	 <select name="mm" id="mois"  >
@@ -68,14 +72,14 @@ pathema="""
                  <option value="negatif">Negatif</option>
       </select><br/>
       
-      <input type="text" id="vs" name="vs" value="VS" placeholder="VS">
-      <input type="text" id="tp" name="tp" value="TP" placeholder="Temps de Prothrombine">
-      <input type="text" id="tca" name="tca" placeholder="TCA" value="TCA">
-      <input type="text" id="ts" name="ts" value="TS" placeholder="TS"><br/>
-      <input type="text" id="tx" name="tx" value="Tx reticul" placeholder="Tx Reticul">
+      <input type="text" id="vs" name="vs" value="" placeholder="VS">
+      <input type="text" id="tp" name="tp" value="" placeholder="Temps de Prothrombine">
+      <input type="text" id="tca" name="tca" placeholder="TCA" value="">
+      <input type="text" id="ts" name="ts" value="" placeholder="TS"><br/>
+      <input type="text" id="tx" name="tx" value="" placeholder="Tx Reticul">
       
       <select type="select" name="ge">
-                 <option value="None">Goutte epaisse</option>
+                 <option value="">Goutte epaisse</option>
                  <option value="positif">Positif</option>
                  <option value="negatif">Negatif</option>
       </select>
@@ -89,17 +93,15 @@ pathema="""
 
           
  </fieldset>
- 
-   
-     <input type="text" name="mail"  id="usernamereg-yid" placeholder="Adresse mail"
-            aria-label="Adresse mail" value="Mail" maxlength="32"   ><br/><br/>
+<br/><br/>
        
        <button type="submit">Enregistrer</button>
     
-    <input type="hidden" name="username" value="%s">     
+    <input type="hidden" name="ID_patient" value="%s">     
+    <input type="hidden" name="type_examen" value="%s">     
 
            
 </form>
-"""%username
+"""%(ID_patient,type_examen)
 ####################################################################################################################
 print pathema
