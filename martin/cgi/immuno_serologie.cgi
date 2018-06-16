@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
 
-#Information du Patient
+
+#Information du Patient Biochimie
 
 
 import cgi
@@ -12,6 +12,8 @@ print "Content-type:text/html"
 print
 
 dataform=cgi.FieldStorage()
+username=dataform.getvalue("username")
+type_examen=dataform.getvalue("examen")
 ID_patient=dataform.getvalue("ID_patient")
 
 et="*"
@@ -21,7 +23,7 @@ br="<br/>"
 
 
 print """<h1><font color="#BD8D46">LBH</font></h1>"""
-print """ <h2 align="right"> Bonjour!</h2>"""
+print """ <h2 align="right"> Bonjour !</h2>"""
 
 print hr
 print """<center ><h1><font color='green'>Les examens medicaux de l'IMPM </font></h1></center>"""
@@ -30,12 +32,14 @@ print hr
 
 
 #################################################################################################################
-print """<h2><i><font color="blue">FICHE DE PAILLASE (BACTERIOLOGIE)</font></i></h2><br/>"""
+print """<h2><i><font color="blue">FICHE DE PAILLASE (IMMUNO-SEROLOGIE)</font></i></h2><br/>"""
 
-patbacte="""
+
+immuno_sero="""
 <meta charset="UTF-8">
-<form action="base_bacterio.cgi" enctype="multipart/form-data">
-
+<form action="base_immuno_sero.cgi" enctype="multipart/form-data">
+ 
+ 
  <fieldset>
 	 <select name="mm" id="mois"  >
             <option value="" selected disabled>mois</option>
@@ -53,22 +57,24 @@ patbacte="""
             <option value="12">Decembre</option>
       </select>
       <input type="tel" pattern="[0-9-() ]*" id="usernamereg-day" name="dd"   value=""  aria-required="true"  role="textbox" aria-multiline="false" placeholder="Jour" aria-label="Date"  minlength="1" maxlength="2">
-      <input type="tel" pattern="[0-9-() ]*" id="usernamereg-year" name="yyyy" value=""  aria-required="true"  role="textbox" aria-multiline="false" placeholder="Annee" aria-label="Date"  minlength="1" maxlength="4"><br/>
+      <input type="tel" pattern="[0-9-() ]*" id="usernamereg-year" name="yyyy" value=""  aria-required="true"  role="textbox" aria-multiline="false" placeholder="Annee" aria-label="Date"  minlength="1" maxlength="4"><br/><br/>
  
- <input type="text" name="macroscopie" value="" placeholder="Macroscopie">
- <input type="text" name="etat_frais" value="" placeholder="Etat frais">
- <input type="text" name="comptage_cellules" value="" placeholder="Comptage cellues"><br/>
- <input type="text" name="coloration_gram" value="" placeholder=" coloration_gram">
- <input type="text" name="cloration_ziehl" value="" placeholder=" Coloration_ziehl">
- <input type="text" name="milieu_culture" value="" placeholder="Milieu de culture"><br/>
- <input type="text" name="observation" value="" placeholder="observation">
- <input type="text" name="conclusion" value="" placeholder="conclusion"><br/>
+ <input type="text" name="ag_hbs" value="" placeholder="ag_hbs">
+ <input type="text" name="ac_hcv" value="" placeholder="ac_hcv">
+ <input type="text" name="aslo" value="" placeholder="aslo">
+ <input type="text" name="crp" value="" placeholder="crp">
+ <input type="text" name="hiv_det" value="" placeholder="hiv_det">
+ <input type="text" name="hiv_im" value="" placeholder="hiv_im">
+ <input type="text" name="chlamy" value="" placeholder="chlamy">
+ <input type="text" name="tpha" value="" placeholder="tpha">
+ <input type="text" name="vdrl" value="" placeholder="vdrl">
+ <input type="text" name="widal" value="" placeholder="widal">
 
- </fieldset>
- 
-   
-     <input type="text" name="email"  id="usernamereg-yid" placeholder="Adresse mail"
-            aria-label="Adresse mail" value="Mail" maxlength="32"   ><br/><br/>
+</fieldset>
+
+
+ <input type="text" name="email"  id="usernamereg-yid" placeholder="Adresse mail"
+            aria-label="Adresse mail" value="" maxlength="32"   ><br/><br/>
        
        <button type="submit">Enregistrer</button>
     
@@ -77,8 +83,7 @@ patbacte="""
 
            
 </form>
-"""%(username, type_examen)
- 
+"""
 
 ####################################################################################################################
-print patbacte
+print immuno_sero

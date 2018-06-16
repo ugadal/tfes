@@ -11,8 +11,7 @@ print "Content-type:text/html"
 print
 
 dataform=cgi.FieldStorage()
-username=dataform.getvalue("username")
-type_examen=dataform.getvalue("examen")
+ID_patient=dataform.getvalue("ID_patient")
 
 et="*"
 Me=et*200
@@ -21,7 +20,7 @@ br="<br/>"
 
 
 print """<h1><font color="#BD8D46">LBH</font></h1>"""
-print """ <h2 align="right"> Bonjour %s !</h2>"""%username
+print """ <h2 align="right"> Bonjour!</h2>"""
 
 print hr
 print """<center ><h1><font color='green'>Les examens medicaux de l'IMPM </font></h1></center>"""
@@ -102,7 +101,7 @@ biochimie="""
 
            
 </form>
-"""%(username, type_examen)
+"""
 
 
 
