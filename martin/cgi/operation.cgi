@@ -87,5 +87,14 @@ B='''<form action="base.cgi" enctype="multipart/form-data">
 if choix=="insertion":
 	print A
 
-if choix=="consultation":
+elif choix=="consultation":
 	print B
+	
+else:
+	print """
+	<p><b><font color="red">Vous n'avez pas fais de selection.<br/>
+	Cliquez sur Accueil pour revenir au point de depart</font></b></p>
+	<form action="../index.html" enctype="multipart/form-data">
+	<button type="submit">Accueil</button>
+	</form>
+	"""
