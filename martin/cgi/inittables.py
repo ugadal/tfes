@@ -12,7 +12,7 @@ c = C.cursor()
 
 def CreateTable():
 	c.execute('''CREATE TABLE `bacteriologie` (
-  `id` int(11),
+  `id` integer PRIMARY KEY,
   `ID_patient` int(15),
   `date` date,
   `type_examen` varchar(255),
@@ -24,9 +24,7 @@ def CreateTable():
   `milieu_culture` text,
   `observation` text,
   `conclusion` text,
-  `technicien` varchar(255),
-  PRIMARY KEY (`id`)
-);
+  `technicien` varchar(255));
  ''')
 
 #~ def AddEntry(nom,prenom,sexe,age,ville,quartier,tel,email):
@@ -49,5 +47,88 @@ for i in c:
     print "\n"
     for j in i:
         print j
+
+
+
+
+
+
+#~ CREATE TABLE `biochimie` (
+  #~ `id` integer PRIMARY KEY,
+  #~ `ID_patient` int(11),
+  #~ `date` date ,
+  #~ `type_examen` text,
+  #~ `S_uree` double,
+  #~ `S_creat` double,
+  #~ `S_gluc` double,
+  #~ `S_ac_ur` double,
+  #~ `S_chol_t` double,
+  #~ `S_sdl` double,
+  #~ `S_ldl` double,
+  #~ `S_tg` double,
+  #~ `E_got` double,
+  #~ `E_gpt` double,
+  #~ `I_na` double,
+  #~ `I_k` double,
+  #~ `I_cl` double,
+  #~ `I_ca` double,
+  #~ `I_mg` double,
+  #~ `technicien` text 
+#~ );
+
+
+#~ CREATE TABLE `hemato_parasitologie` (
+  #~ `id` integer PRIMARY KEY,
+  #~ `ID_patient` int(11),
+  #~ `date` date ,
+  #~ `type_examen` text,
+  #~ `gs` text,
+  #~ `rhesus` text,
+  #~ `vs` int(11),
+  #~ `tp` int(11),
+  #~ `tca` int(11),
+  #~ `ts` int(11),
+  #~ `tx_reticul` int(11),
+  #~ `goutte_ep` text,
+  #~ `autre` text,
+  #~ `technicien` text
+#~ );
+
+
+
+
+#~ CREATE TABLE `immuno_serologie` (
+  #~ `id` integer PRIMARY KEY,
+  #~ `ID_patient` int(15),
+  #~ `date` date,
+  #~ `type_examen` text,
+  #~ `ag_hbs` text,
+  #~ `ac_hcv` text,
+  #~ `aslo` text,
+  #~ `crp` text,
+  #~ `hiv_det` text,
+  #~ `hiv_im` text,
+  #~ `chlamy` text,
+  #~ `tpha` text,
+  #~ `vdrl` text,
+  #~ `widal` text,
+  #~ `technicien` text
+#~ );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

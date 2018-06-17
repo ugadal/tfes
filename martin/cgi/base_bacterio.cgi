@@ -53,7 +53,7 @@ C=sqlite3.connect("db/impm.db")
 c=C.cursor()
 
 
-c.execute("select count(ID_patient) from bacteriologie")
+c.execute("select count(id) from bacteriologie")
 b=int(c.fetchall()[0][0])
 
 c.execute("""INSERT INTO bacteriologie(ID_patient,date,type_examen,macroscopie,etat_frais,comptage_cellules,coloration_gram,coloration_ziehl,milieu_culture,observation,conclusion) 
@@ -63,7 +63,7 @@ VALUES (?,?,?,?,?,?,?,?,?,?,?);
 C.commit() 
 
 
-c.execute("select count(ID_patient) from bacteriologie")
+c.execute("select count(id) from bacteriologie")
 R=int(c.fetchall()[0][0])
 if R>b:
 	print "Vos donnees ont ete bien enregistre<br/> Le Nombre de patient enregistre en bactériologie est de: <b> %s </b>"%R

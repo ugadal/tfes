@@ -60,7 +60,7 @@ import sqlite3
 C = sqlite3.connect('db/impm.db')
 c=C.cursor()
 
-c.execute("select count(ID_patient) from biochimie")
+c.execute("select count(date) from biochimie")
 b=int(c.fetchall()[0][0])
 
 c.execute("""INSERT INTO biochimie(ID_patient,date,type_examen,S_uree,S_creat,S_gluc,S_ac_ur,S_chol_t,S_sdl,S_ldl,S_tg,E_got,E_gpt,I_na,I_k,I_cl,I_ca,I_mg) 
@@ -69,7 +69,7 @@ VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
 
 C.commit() 
 
-c.execute("select count(ID_patient) from biochimie")
+c.execute("select count(date) from biochimie")
 R=int(c.fetchall()[0][0])
 if R>b:
 	print "Vos donnees ont ete bien enregistre<br/> Le Nombre de patient enregistre en biochimie est de: <b> %s </b>"%R

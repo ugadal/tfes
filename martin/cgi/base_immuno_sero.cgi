@@ -41,7 +41,7 @@ print """<h1><font color="#BD8D46">LBH</font></h1>"""
 print """ <h2 align="right"> Bonjour !</h2>"""
 
 print hr
-print """<center><h1><font color='green'>Les examens medicaux de l'IMPM </font></h1></center>"""
+print """<center style="background-color:#D0A9F5;><h1><font color='green'>Les examens medicaux de l'IMPM </font></h1></center>"""
 print hr
 
 
@@ -70,14 +70,13 @@ else:
 	gistre, Veuillez recommencer"""
 
 
-print br,br,hr
-################################################
+print br,br,br,hr,br
 
+###################################
 print """
-	<p><b><font color="red">Vous n'avez pas selectionne un examen. 
-	Cliquez sur Ici pour revenir au point de depart</font></b></p>
+	<p><b><font color="red">Vous avez terminé l'opération avec ce patient.<br/>
+	Cliquez sur Accueil pour revenir au point de depart</font></b></p>
 	<form action="../index.html" enctype="multipart/form-data">
-	<button type="submit">Ici</button>
-
+	<button type="submit">Accueil</button>
+	</form>
 """
-
