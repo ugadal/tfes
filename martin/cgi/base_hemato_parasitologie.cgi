@@ -76,10 +76,23 @@ print br,br,br,hr,br
 
 ###################################
 print """
+	<p><b><font color="red"><br/>
+	Cliquez sur le bouton pour effectuer une nouvelle analyse sur le meme patient</font></b></p>
+	<form action="ancien_patient.cgi" enctype="multipart/form-data">
+	<button type="submit">Nouvelle analyse</button>
+	<input type="hidden" name="ID_patient" value="%s">
+	</form>
+"""%ID_patient,br,br
+
+
+
+print """
 	<p><b><font color="red">Vous avez terminé l'opération avec ce patient.<br/>
 	Cliquez sur Accueil pour revenir au point de depart</font></b></p>
 	<form action="../index.html" enctype="multipart/form-data">
 	<button type="submit">Accueil</button>
 	</form>
-"""
+""",br,br
+
+
 

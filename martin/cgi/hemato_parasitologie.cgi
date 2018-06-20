@@ -40,7 +40,7 @@ pathema="""
 <form action="base_hemato_parasitologie.cgi" enctype="multipart/form-data">
  
  <fieldset>
-	 <select name="mm" id="mois"  >
+	 <select name="mm" id="mois" required >
             <option value="" selected disabled>mois</option>
             <option value="1">Janvier</option>
             <option value="2">Fevrier</option>
@@ -55,8 +55,8 @@ pathema="""
             <option value="11">Novembre</option>
             <option value="12">Decembre</option>
       </select>
-      <input type="tel" pattern="[0-9-() ]*" id="usernamereg-day" name="dd"   value=""  aria-required="true"  role="textbox" aria-multiline="false" placeholder="Jour" aria-label="Date"  minlength="1" maxlength="2">
-      <input type="tel" pattern="[0-9-() ]*" id="usernamereg-year" name="yyyy" value=""  aria-required="true"  role="textbox" aria-multiline="false" placeholder="Annee" aria-label="Date"  minlength="1" maxlength="4">
+      <input type="tel" pattern="[0-9-() ]*" id="usernamereg-day" name="dd"   value=""  required  role="textbox" aria-multiline="false" placeholder="Jour" aria-label="Date"  minlength="1" maxlength="2">
+      <input type="tel" pattern="[0-9-() ]*" id="usernamereg-year" name="yyyy" value=""  required  role="textbox" aria-multiline="false" placeholder="Annee" aria-label="Date"  minlength="1" maxlength="4">
      
       <select type="select" name="gs">
                  <option value="" selected disabled>Groupe sanguin</option>

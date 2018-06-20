@@ -11,7 +11,7 @@ print
 
 dataform=cgi.FieldStorage()
 
-ID_patient=dataform.getvalue("patient")
+ID_patient=dataform.getvalue("ID_patient")
 exam=dataform.getvalue("exam")
 
 hr="<hr/>"
@@ -115,10 +115,11 @@ elif exam=="immuno_serologie":
 else:
 	print """
 	<p><b><font color="red">Vous n'avez pas selectionne un examen. 
-	Cliquez sur Ici pour revenir au point de depart</font></b></p>
-	<form action="../index.html" enctype="multipart/form-data">
+	Cliquez sur Ici pour faire un choix</font></b></p>
+	<form action="ancien_patient.cgi" enctype="multipart/form-data">
 	<button type="submit">Ici</button>
+	<input type="hidden" name="ID_patient" value="%s">
 
-"""
+	"""%ID_patient
 
 

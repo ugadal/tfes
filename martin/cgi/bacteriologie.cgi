@@ -33,12 +33,12 @@ print hr
 #################################################################################################################
 print """<h2><i><font color="blue">FICHE DE PAILLASE (BACTERIOLOGIE)</font></i></h2><br/>"""
 
-patbacte="""
+print """
 <meta charset="UTF-8">
 <form action="base_bacterio.cgi" enctype="multipart/form-data">
 
  <fieldset>
-	 <select name="mm" id="mois"  >
+	 <select name="mm" id="mois" required >
             <option value="" selected disabled>mois</option>
             <option value="1">Janvier</option>
             <option value="2">Fevrier</option>
@@ -53,16 +53,16 @@ patbacte="""
             <option value="11">Novembre</option>
             <option value="12">Decembre</option>
       </select>
-      <input type="tel" pattern="[0-9-() ]*" id="usernamereg-day" name="dd"   value=""  aria-required="true"  role="textbox" aria-multiline="false" placeholder="Jour" aria-label="Date"  minlength="1" maxlength="2">
-      <input type="tel" pattern="[0-9-() ]*" id="usernamereg-year" name="yyyy" value=""  aria-required="true"  role="textbox" aria-multiline="false" placeholder="Annee" aria-label="Date"  minlength="1" maxlength="4"><br/>
+      <input type="tel" pattern="[0-9-() ]*" id="usernamereg-day" name="dd"   value=""  required  role="textbox" aria-multiline="false" placeholder="Jour" aria-label="Date"  minlength="1" maxlength="2">
+      <input type="tel" pattern="[0-9-() ]*" id="usernamereg-year" name="yyyy" value=""  required  role="textbox" aria-multiline="false" placeholder="Annee" aria-label="Date"  minlength="1" maxlength="4"><br/>
  
- <input type="text" name="macroscopie" value="" placeholder="Macroscopie">
+ <input type="text" name="macroscopie" value="" placeholder="Macroscopie" required>
  <input type="text" name="etat_frais" value="" placeholder="Etat frais">
  <input type="text" name="comptage_cellules" value="" placeholder="Comptage cellues"><br/>
  <input type="text" name="coloration_gram" value="" placeholder=" coloration_gram">
  <input type="text" name="coloration_ziehl" value="" placeholder=" Coloration_ziehl">
  <input type="text" name="milieu_culture" value="" placeholder="Milieu de culture"><br/>
- <input type="text" name="observation" value="" placeholder="observation">
+ <input type="text" name="observation" value="" placeholder="observation" required>
  <input type="text" name="conclusion" value="" placeholder="conclusion"><br/>
 
  </fieldset>
@@ -70,7 +70,7 @@ patbacte="""
        
        <button type="submit">Enregistrer</button>
     
-    <input type="hidden" name="username" value="%s">     
+    <input type="hidden" name="ID_patient" value="%s">     
     <input type="hidden" name="type_examen" value="%s">     
 
            
@@ -79,4 +79,4 @@ patbacte="""
  
 
 ####################################################################################################################
-print patbacte
+

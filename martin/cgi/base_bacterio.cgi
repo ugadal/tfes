@@ -47,6 +47,8 @@ print """<h2><i><font color="blue">FICHE DE PAILLASE (BACTERIOLOGIE)</font></i><
 
 print hr
 
+print ID_patient
+
 
 import sqlite3
 C=sqlite3.connect("db/impm.db")
@@ -75,12 +77,24 @@ print br,br,br,hr,hr,br
 
 ###################################
 print """
+	<p><b><font color="green"><br/>
+	Cliquez sur le bouton pour effectuer une nouvelle analyse sur le meme patient</font></b></p>
+	<form action="ancien_patient.cgi" enctype="multipart/form-data">
+	<input type="hidden" name="ID_patient" value="%s">
+	<button type="submit">Nouvelle analyse</button>
+	</form>
+	"""%ID_patient
+
+print br,br
+
+
+print """
 	<p><b><font color="red">Vous avez terminé l'opération avec ce patient.<br/>
 	Cliquez sur Accueil pour revenir au point de depart</font></b></p>
 	<form action="../index.html" enctype="multipart/form-data">
 	<button type="submit">Accueil</button>
 	</form>
-"""
+	"""
 
 
 
