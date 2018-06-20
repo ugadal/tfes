@@ -10,6 +10,7 @@ print
 
 dataform=cgi.FieldStorage()
 exam=str(dataform.getvalue("exam"))
+choix=dataform.getvalue("choix")
 
 
 
@@ -53,10 +54,11 @@ for i in c:
 print """</select> """
 print br,br
 print """ <input type="hidden" name="exam" value="%s">
+		  <input type="hidden" name="choix" value="%s">
        <button type="submit">Suivant</button>   
         
 </form>
-"""%exam
+"""%(exam,choix)
 c.close()
 ######################################################################################################
 print hr
@@ -89,7 +91,8 @@ print '''<meta charset="UTF-8">
 	<input type="text" name="tel" value="" placeholder="Telephone"><br/>
  </fieldset> 
  <input type="hidden" name="exam" value="%s">
- '''%exam
+ <input type="hidden" name="choix" value="%s">
+ '''%(exam,choix)
 
 print """ <input type="text" name="email"  id="usernamereg-yid" placeholder="Adresse mail"
             aria-label="Adresse mail" value="" maxlength="32"   ><br/><br/>

@@ -172,5 +172,5 @@ else:
 	<button type="submit">Ici</button>
 	<input type="hidden" name="ID_patient" value="%s">
 
-"""%ID_patient
+	"""%ID_patient
 
