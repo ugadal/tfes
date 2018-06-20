@@ -41,7 +41,7 @@ immuno_sero="""
  
  
  <fieldset>
-	 <select name="mm" id="mois"  >
+	 <select name="mm" id="mois" required >
             <option value="" selected disabled>mois</option>
             <option value="1">Janvier</option>
             <option value="2">Fevrier</option>
@@ -56,8 +56,8 @@ immuno_sero="""
             <option value="11">Novembre</option>
             <option value="12">Decembre</option>
       </select>
-      <input type="tel" pattern="[0-9-() ]*" id="usernamereg-day" name="dd"   value=""  aria-required="true"  role="textbox" aria-multiline="false" placeholder="Jour" aria-label="Date"  minlength="1" maxlength="2">
-      <input type="tel" pattern="[0-9-() ]*" id="usernamereg-year" name="yyyy" value=""  aria-required="true"  role="textbox" aria-multiline="false" placeholder="Annee" aria-label="Date"  minlength="1" maxlength="4"><br/><br/>
+      <input type="tel" pattern="[0-9-() ]*" id="usernamereg-day" name="dd"   value=""  required role="textbox" aria-multiline="false" placeholder="Jour" aria-label="Date"  minlength="1" maxlength="2">
+      <input type="tel" pattern="[0-9-() ]*" id="usernamereg-year" name="yyyy" value=""  required  role="textbox" aria-multiline="false" placeholder="Annee" aria-label="Date"  minlength="1" maxlength="4"><br/><br/>
  
  <input type="text" name="ag_hbs" value="" placeholder="ag_hbs">
  <input type="text" name="ac_hcv" value="" placeholder="ac_hcv">
