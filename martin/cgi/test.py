@@ -3,6 +3,9 @@
 import cgi
 import sqlite3 as sql
 def mab(row):
+	#~ print """
+	#~ <button onmouseover=fichpatient(%s) onmouseout=cleanfich()>select</button>%s %s (%s) <br>
+	#~ """%row
 	print """
 	<button onclick=fichpatient(%s)>select</button>%s %s (%s) <br>
 	"""%row

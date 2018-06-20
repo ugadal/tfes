@@ -10,5 +10,15 @@ print "Content-type:text/html"
 print
 print idp
 c.execute("""SELECT * from patient where id=?""",(idp,))
+
 print c.fetchall()
+print "<br><hr>"
+TA=["biochimie","bacteriologie","hemato_parasitologie","immuno_serologie"]
+for ta in TA:
+	print "resultats de %s :<br>"%ta
+	cmd="""select * from %s where ID_patient= %s"""%(ta,idp)
+	c.execute(cmd)
+	#~ c.execute("""select * from ? where ID_patient = ?""",(ta,idp,))
+	print c.fetchall()
+	print "<hr>"
 print """<button onclick=deletepatient(%s)>delete this patient</button>"""%idp

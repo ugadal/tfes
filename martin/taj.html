@@ -8,6 +8,9 @@ Selected patient info:<br>
 <div id="selectedpatient">
 </div>
 <script>
+function cleanfich() {
+	document.getElementById("selectedpatient").innerHTML =""
+}
 function loadpatients() {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
