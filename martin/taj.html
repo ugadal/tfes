@@ -17,6 +17,7 @@ function loadpatients() {
     if (this.readyState == 4 && this.status == 200) {
       document.getElementById("patientsdiv").innerHTML =
       this.responseText;
+      cleanfich()
     }
   };
 	xhttp.open("POST", "cgi/test.py", true);
