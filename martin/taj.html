@@ -1,0 +1,50 @@
+<html>
+<body>
+Search for a patient name<br>
+<input type=text id=nib oninput=loadpatients()></input>
+<div id="patientsdiv">
+</div>
+Selected patient info:<br>
+<div id="selectedpatient">
+</div>
+<script>
+function loadpatients() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("patientsdiv").innerHTML =
+      this.responseText;
+    }
+  };
+	xhttp.open("POST", "cgi/test.py", true);
+	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhttp.send("nib="+document.getElementById("nib").value);
+}
+function fichpatient(id) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("selectedpatient").innerHTML =
+      this.responseText;
+    }
+  };
+	xhttp.open("POST", "cgi/getfich.py", true);
+	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhttp.send("idp="+id);
+}
+function deletepatient(id) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("selectedpatient").innerHTML = "deleted"
+      loadpatients();
+    }
+  };
+	xhttp.open("POST", "cgi/delpatient.py", true);
+	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhttp.send("idp="+id);
+}
+</script>
+
+</body>
+</html>
