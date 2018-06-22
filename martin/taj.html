@@ -23,6 +23,8 @@ function loadpatients() {
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xhttp.send("nib="+document.getElementById("nib").value);
 }
+
+
 function fichpatient(id) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
@@ -35,6 +37,9 @@ function fichpatient(id) {
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xhttp.send("idp="+id);
 }
+
+
+
 function deletepatient(id) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
@@ -47,6 +52,8 @@ function deletepatient(id) {
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xhttp.send("idp="+id);
 }
+
+
 </script>
 
 </body>
