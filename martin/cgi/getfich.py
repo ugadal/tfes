@@ -14,7 +14,7 @@ IPatient=c.fetchall()
 print "<table border=6 cellspacing=2 cellpadding=1>"
 print "<tr>"
 for i in range(len(IPatient)):
-	p=IPatient[0]
+	p=IPatient[i]
 	for j in range(len(p)):
 		print "<td>",p[j],"</td>"
 	print "</tr>"
@@ -40,7 +40,7 @@ for ta in TA:
 	print "<table border=6 cellspacing=2 cellpadding=1>"
 	print "<tr>"
 	for i in range(len(IPatient)):
-		p=IPatient[0]
+		p=IPatient[i]
 		for j in range(len(p)):
 			print "<td>",p[j],"</td>"
 		print "</tr>"
