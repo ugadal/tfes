@@ -36,11 +36,11 @@ for ta in TA:
 	cmd="""select * from %s where ID_patient= %s"""%(ta,idp)
 	c.execute(cmd)
 	#~ c.execute("""select * from ? where ID_patient = ?""",(ta,idp,))
-	IPatient=c.fetchall()
+	IPatient2=c.fetchall()
 	print "<table border=6 cellspacing=2 cellpadding=1>"
 	print "<tr>"
-	for i in range(len(IPatient)):
-		p=IPatient[i]
+	for i in range(len(IPatient2)):
+		p=IPatient2[i]
 		for j in range(len(p)):
 			print "<td>",p[j],"</td>"
 		print "</tr>"
@@ -51,3 +51,4 @@ for ta in TA:
 #####################
 
 print """<button onclick=deletepatient(%s)>delete this patient</button>"""%idp
+print """<button onclick=modifpatient(%s)>modification du patient</button>"""%idp
