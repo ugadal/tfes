@@ -44,7 +44,6 @@ for ta in TA:
 		for j in range(len(p)):
 			print "<td>",p[j],"</td>"
 		print "</tr>"
-	#~ print "<hr>"
 
 	print "</table>"
 	print "<br/><br/><hr/>"
