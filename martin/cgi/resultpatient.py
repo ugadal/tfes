@@ -12,14 +12,14 @@ idp=f.getvalue("idp")
 print "Content-type:text/html"
 print
 
-print "L'id du patient est %s"%idp
+print "<b>Les différentes analyses:</b><br/><br/>"
 
 
 
 TA=["biochimie","bacteriologie","hemato_parasitologie","immuno_serologie"]
 
 for ta in TA:
-	print "resultats de %s :<br>"%ta
+	print "<button onclick=%s(%s)>resultats de %s </button><br><br/>"%(ta,idp,ta)
 	#~ cmd="""select * from %s where ID_patient= %s"""%(ta,idp)
 	#~ c.execute(cmd)
 	#~ res=c.fetchall()
