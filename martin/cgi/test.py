@@ -17,5 +17,5 @@ if nib==None:nib=""
 print "Content-type:text/html"
 print
 se='%'+nib+'%'
-c.execute("""SELECT id,nom,prenom,email FROM patient WHERE nom like ? or prenom like ? limit 25""",(se,se,))
+c.execute("""SELECT id,nom,prenom,email FROM patient WHERE nom like ? or prenom like ? limit 15""",(se,se,))
 for row in  c.fetchall():mab(row)

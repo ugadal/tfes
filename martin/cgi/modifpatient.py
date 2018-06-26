@@ -11,7 +11,7 @@ idp=f.getvalue("idp")
 print "Content-type:text/html"
 print
 
-print """
+print """<form>
 <select id="monselect">
   <option value="nom">Nom</option> 
   <option value="prenom" selected>Prenom</option>
@@ -22,4 +22,5 @@ print """
   <option value="tel">Tel</option>
   <option value="email">email</option>
 </select>
+</form>
 """
