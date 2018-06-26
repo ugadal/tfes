@@ -4,7 +4,7 @@ div{position: absolute; padding: 1em; border: 1px solid #000}
 #nw{background: #f09; top: 0; left: 0; right: 70%; bottom: 90%}
 #selectedpatient{background: #f90; top: 0; left: 30%; right: 0; bottom: 50%}
 #patientsdiv{ top: 10%; left: 0; right: 70%;}
-#se{background: #090; top: 50%; left: 30%; right: 0; bottom: 50}
+#se{background: #090; top: 50%; left: 30%; right: 0; bottom: 0}
 </style>
 
 <div id="nw">Search for a patient name<br>
@@ -66,6 +66,20 @@ function modifpatient(id) {
     }
   };
 	xhttp.open("POST", "cgi/modifpatient.py", true);
+	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhttp.send("idp="+id);
+}
+
+
+function newinfo(id) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("se").innerHTML = this.responseText
+      loadpatients();
+    }
+  };
+	xhttp.open("POST", "cgi/newinfo.py", true);
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xhttp.send("idp="+id);
 }
