@@ -35,18 +35,8 @@ for ta in TA:
 	print "resultats de %s :<br>"%ta
 	cmd="""select * from %s where ID_patient= %s"""%(ta,idp)
 	c.execute(cmd)
-	#~ c.execute("""select * from ? where ID_patient = ?""",(ta,idp,))
-	IPatient2=c.fetchall()
-	print "<table border=6 cellspacing=2 cellpadding=1>"
-	print "<tr>"
-	for i in range(len(IPatient2)):
-		p=IPatient2[i]
-		for j in range(len(p)):
-			print "<td>",p[j],"</td>"
-		print "</tr>"
-
-	print "</table>"
-	print "<br/><br/><hr/>"
+	res=c.fetchall()
+	if res:print res
 #####################
 
 print """<button onclick=deletepatient(%s)>delete this patient</button>"""%idp
