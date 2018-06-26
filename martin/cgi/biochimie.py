@@ -20,7 +20,7 @@ D=c.fetchall()
 for j in D:
 	li1.append(j[1])
 
-cmd="""select * from biochimie where ID_patient= %s"""%idp
+cmd="""select * from biochimie where ID_patient= %s ORDER BY id DESC"""%idp
 c.execute(cmd)
 b=c.fetchall()
 

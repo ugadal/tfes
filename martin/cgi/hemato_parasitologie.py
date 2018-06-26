@@ -15,17 +15,17 @@ print
 
 
 li1=[]
-c.execute("pragma table_info(bacteriologie);")
+c.execute("pragma table_info(hemato_parasitologie);")
 D=c.fetchall()
 for j in D:
 	li1.append(j[1])
 
-cmd="""select * from bacteriologie where ID_patient= %s ORDER BY id DESC"""%idp
+cmd="""select * from hemato_parasitologie where ID_patient= %s ORDER BY id DESC"""%idp
 c.execute(cmd)
 b=c.fetchall()
 
 for row in b:
-	print "<caption>Resultat bacteriologie </caption>"
+	print "<caption>Resultat hemato_parasitologie </caption>"
 	print "<table cellspacing=5 cellpadding=2>"
 	print "<tr>"
 	for i in range(len(row)):
@@ -35,3 +35,4 @@ for row in b:
 	print "<br/><br/><br/><br/>"
 
 print """</center></body>"""
+

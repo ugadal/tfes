@@ -87,6 +87,34 @@ function bacteriologie(id) {
 }
 
 
+function hemato_parasitologie(id) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("se").innerHTML = this.responseText;
+      
+    }
+  };
+	xhttp.open("POST", "cgi/hemato_parasitologie.py", true);
+	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhttp.send("idp="+id);
+}
+
+
+function immuno_serologie(id) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("se").innerHTML = this.responseText;
+      
+    }
+  };
+	xhttp.open("POST", "cgi/immuno_serologie.py", true);
+	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhttp.send("idp="+id);
+}
+
+
 function deletepatient(id) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {

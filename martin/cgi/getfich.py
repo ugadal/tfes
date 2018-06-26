@@ -59,7 +59,7 @@ for row in b:
 	#~ if res:print res
 #####################
 
-print """<button onclick=deletepatient(%s)>delete</button>"""%idp
+print """<button onclick=resultpatient(%s)>Resultat</button>"""%idp
 print """<button onclick=modifpatient(%s)>update</button>"""%idp
 print """<button onclick=addpatient(%s)>Add</button>"""%idp
-print """<button onclick=resultpatient(%s)>Resultat</button>"""%idp
+print """<button onclick=deletepatient(%s)>delete</button>"""%idp
