@@ -8,13 +8,26 @@ div{position: absolute; padding: 1em; border: 1px solid #000}
 </style>
 
 <div id="nw">Search for a patient name<br>
-<input type=text id=nib oninput=loadpatients()></input><button onclick=createpat()>or create a new one</button></div>
+<input type=text id=nib oninput=loadpatients()></input>
+<button onclick=createpat()>or create a new one</button></div>
 <div id="selectedpatient">selectedpatient</div>
 <div id="fichpatient">resultpatient</div>
 <div id="se">test</div>
 <script>
 function cleandiv(namediv) {
 	document.getElementById(namediv).innerHTML =""
+}
+function createpat() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("se").innerHTML =
+      this.responseText;
+      cleandiv("fichpatient");
+    }
+  };
+  xhttp.open("GET", "patientform.html", true);
+  xhttp.send();
 }
 function loadpatients() {
   var xhttp = new XMLHttpRequest();
@@ -43,7 +56,25 @@ function fichpatient(id) {
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xhttp.send("idp="+id);
 }
-
+function formaccess() {
+	form=document.getElementById("patientform");
+	var z="";
+	for (i=0;i<form.length;i++) {
+		w=form.elements[i].name;
+		v=form.elements[i].value;
+		z+="&"+w+"="+v;
+	}
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("se").innerHTML=this.responseText;
+    }
+  };
+	xhttp.open("POST", "cgi/report.cgi");
+	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhttp.send(z);
+	return false;
+}
 
 //~ function resultpatient(id) {
   //~ var xhttp = new XMLHttpRequest();
