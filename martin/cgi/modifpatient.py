@@ -8,26 +8,42 @@ C=sql.connect("db/impm.db")
 c=C.cursor()
 f=cgi.FieldStorage()
 idp=f.getvalue("idp")
+cmd="""select * from patient where id=%s"""%idp
+c.execute(cmd)
+d=c.fetchall()[0]
+d=list(d)
+d.append(idp)
+d=tuple(d)
 print "Content-type:text/html"
 print
+print d
+print """
+<form id="patientform" onsubmit="return formaccess2(%i);">> 
 
-print "L'id du patient est %s"%idp
+<fieldset>
+                <input  type="text"  id="patientnom" name="nom" placeholder="Nom du patient" value=%s maxlength="32" required >
+                <input  type="text"  id="patientprenom" name="prenom" placeholder="Prenom" aria-label="prenom" value=%s maxlength="32"  required>
+                 
+                 <select type="select" name="sexe" value=%s required>
+                 <option value="Sexe" selected disabled>Sexe du patient</option>
+                 <option value="F">Feminin</option>
+                 <option value="M">Masculin</option>
+                 </select>
+                 <input type="tel" pattern="[0-9-() ]*" name="age"   value=%s  required role="textbox" aria-multiline="false" placeholder="Age" aria-label="age"  minlength="1" maxlength="3">
+                <br/>
+ </fieldset>
+ 
+ <fieldset>
+	<input type="text" name="ville" value=%s placeholder="ville" required>		
+	<input type="text" name="quartier" value=%s placeholder="Quartier" required>
+	<input type="text" name="tel" value=%s placeholder="Telephone"><br/>
+ </fieldset> 
 
-print """<form>
-<select name="monselect">
-  <option value="" selected disabled>Element a modifier</option>
-  <option value="nom">Nom</option> 
-  <option value="prenom">Prenom</option>
-  <option value="sexe">Sexe</option>
-  <option value="age">Age</option>
-  <option value="ville">Ville</option>
-  <option value="quartier">Quartier</option>
-  <option value="tel">Tel</option>
-  <option value="email">email</option>
-</select>
 
-<input type=text name="newval" placeholder="Nouvelle valeur">
-<button onclick=newinfo(%s)>Change value</button>
-<input type="hidden" name="idp" value="%s"> 
+<input type="text" name="email"  id="usernamereg-yid" placeholder="Adresse mail"
+            aria-label="Adresse mail" value=%s maxlength="32"   ><br/><br/>
+       
+       <button>Enregistrer</button>   
+<input type=hidden name=idpatient value=%s>     
 </form>
-"""%(idp,idp)
+"""%d

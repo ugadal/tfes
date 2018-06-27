@@ -81,6 +81,27 @@ function formaccess() {
 	xhttp.send(z);
 	return false;
 }
+function formaccess2(id) {
+	form=document.getElementById("patientform");
+	var z="";
+	for (i=0;i<form.length;i++) {
+		w=form.elements[i].name;
+		v=form.elements[i].value;
+		z+="&"+w+"="+v;
+	}
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+		//~ alert(this.responseText);
+      document.getElementById("se").innerHTML=this.responseText;
+      fichpatient(id);
+    }
+  };
+	xhttp.open("POST", "cgi/updatepatient.py");
+	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhttp.send(z);
+	return false;
+}
 
 //~ function resultpatient(id) {
   //~ var xhttp = new XMLHttpRequest();
@@ -207,19 +228,19 @@ function deletepatient(id) {
 }
 
 
-//~ function modifpatient(id) {
-  //~ var xhttp = new XMLHttpRequest();
-  //~ xhttp.onreadystatechange = function() {
-    //~ if (this.readyState == 4 && this.status == 200) {
-      //~ document.getElementById("se").innerHTML =
-      //~ this.responseText;
+function modifpatient(id) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("se").innerHTML =
+      this.responseText;
       
-    //~ }
-  //~ };
-	//~ xhttp.open("POST", "cgi/modifpatient.py", true);
-	//~ xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	//~ xhttp.send("idp="+id);
-//~ }
+    }
+  };
+	xhttp.open("POST", "cgi/modifpatient.py", true);
+	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhttp.send("idp="+id);
+}
 
 
 
