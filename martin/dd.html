@@ -36,6 +36,7 @@ function fichpatient(id) {
     if (this.readyState == 4 && this.status == 200) {
       document.getElementById("fichpatient").innerHTML =
       this.responseText;
+      cleandiv("se");
     }
   };
 	xhttp.open("POST", "cgi/getfich.py", true);
