@@ -2,29 +2,28 @@
 html, body{width: 100%; height: 100%; padding: 0; margin: 0}
 div{position: absolute; padding: 1em; border: 1px solid #000}
 #nw{background: #f09; top: 0; left: 0; right: 70%; bottom: 90%}
-#selectedpatient{background: #f90; top: 0; left: 30%; right: 30%; bottom: 50%}
-#resultpatient{background: #f50; top: 0; left: 65%; right: 0; bottom: 50%}
-#patientsdiv{ top: 10%; left: 0; right: 70%;}
+#selectedpatient{background: #f90; top: 10%; left: 0%; right: 70%; bottom: 0}
+#fichpatient{background: #f50; top: 0; left: 30%; right: 0; bottom: 50%}
 #se{background: #090; top: 50%; left: 30%; right: 0;}
 </style>
 
 <div id="nw">Search for a patient name<br>
-<input type=text id=nib oninput=loadpatients()></input></div>
+<input type=text id=nib oninput=loadpatients()></input><button onclick=createpat()>or create a new one</button></div>
 <div id="selectedpatient">selectedpatient</div>
-<div id="resultpatient">resultpatient</div>
-<div id="patientsdiv"></div>
+<div id="fichpatient">resultpatient</div>
 <div id="se">test</div>
 <script>
-function cleanfich() {
-	document.getElementById("selectedpatient").innerHTML =""
+function cleandiv(namediv) {
+	document.getElementById(namediv).innerHTML =""
 }
 function loadpatients() {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("patientsdiv").innerHTML =
+      document.getElementById("selectedpatient").innerHTML =
       this.responseText;
-      cleanfich()
+      cleandiv("fichpatient");
+      cleandiv("se");
     }
   };
 	xhttp.open("POST", "cgi/test.py", true);
@@ -35,7 +34,7 @@ function fichpatient(id) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("selectedpatient").innerHTML =
+      document.getElementById("fichpatient").innerHTML =
       this.responseText;
     }
   };
@@ -45,17 +44,29 @@ function fichpatient(id) {
 }
 
 
-function resultpatient(id) {
+//~ function resultpatient(id) {
+  //~ var xhttp = new XMLHttpRequest();
+  //~ xhttp.onreadystatechange = function() {
+    //~ if (this.readyState == 4 && this.status == 200) {
+      //~ document.getElementById("resultpatient").innerHTML = this.responseText;
+      
+    //~ }
+  //~ };
+	//~ xhttp.open("POST", "cgi/resultpatient.py", true);
+	//~ xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	//~ xhttp.send("idp="+id);
+//~ }
+function showresult(table,idanalysis) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("resultpatient").innerHTML = this.responseText;
+      document.getElementById("se").innerHTML = this.responseText;
       
     }
   };
-	xhttp.open("POST", "cgi/resultpatient.py", true);
+	xhttp.open("POST", "cgi/showanalysis.py", true);
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	xhttp.send("idp="+id);
+	xhttp.send("table="+table+"&idanalysis="+idanalysis);
 }
 
 

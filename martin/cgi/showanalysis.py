@@ -12,10 +12,12 @@ def mab(row):
 C=sql.connect("db/impm.db")
 c=C.cursor()
 f=cgi.FieldStorage()
-nib=f.getvalue("nib")
-if nib==None:nib=""
+table=f.getvalue("table")
+ida=f.getvalue("idanalysis")
 print "Content-type:text/html"
 print
-se='%'+nib+'%'
-c.execute("""SELECT id,nom,prenom,email FROM patient WHERE nom like ? or prenom like ? limit 15""",(se,se,))
-for row in  c.fetchall():mab(row)
+cmd="""select * from %s where id = %s"""%(table,ida)
+#~ print cmd,table,ida
+c.execute(cmd)
+print c.fetchall()[0]
+#~ for row in  c.fetchall():mab(row)

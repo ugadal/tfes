@@ -12,54 +12,38 @@ print
 
 
 li1=["id","nom","prenom","sexe","age","ville","quartier","tel","email"]
+li1=["nom","prenom","sexe","age","ville","quartier","tel","email"]
 c.execute("""SELECT * from patient where id=?""",(idp,))
-b=c.fetchall()
+b=c.fetchall()[0]
 
-for row in b:
-	print "<caption>Information du patient </caption>"
-	print "<table cellspacing=5 cellpadding=2>"
-	print "<tr>"
-	for i in range(len(row)):
-		print """<th style="background-color:powderblue;">""",li1[i],"</th>","""<td style="background-color:#00FF80;">""", row[i],"</td>","</tr>"
+print "<caption>Information du patient </caption>"
+print "<table cellspacing=5 cellpadding=2>"
+
+for f,v in zip(li1,b[1:]):
+	print """<tr>
+			<th style="background-color:powderblue;">%s</th>
+			<td style="background-color:#00FF80;">%s</td>
+			</tr>"""%(f,v)
 	
-	print "</table>"	
-
-
-
-
-
-
-
-
-
-#~ c.execute("""SELECT * from patient where id=?""",(idp,))
-#~ IPatient=c.fetchall()
-#~ print "<table border=6 cellspacing=2 cellpadding=1>"
-#~ print "<tr>"
-#~ for i in range(len(IPatient)):
-	#~ p=IPatient[i]
-	#~ for j in range(len(p)):
-		#~ print "<td>",p[j],"</td>"
-	#~ print "</tr>"
-
-#~ print "</table>"
-
-
-
+print "</table>"	
 
 
 #####################
-#~ TA=["biochimie","bacteriologie","hemato_parasitologie","immuno_serologie"]
+TA=["biochimie","bacteriologie","hemato_parasitologie","immuno_serologie"]
 
-#~ for ta in TA:
-	#~ print "resultats de %s :<br>"%ta
-	#~ cmd="""select * from %s where ID_patient= %s"""%(ta,idp)
-	#~ c.execute(cmd)
-	#~ res=c.fetchall()
-	#~ if res:print res
+for ta in TA:
+	cmd="""select id,date from %s where ID_patient= %s order by date desc"""%(ta,idp)
+	c.execute(cmd)
+	res=c.fetchall()
+	if res:
+		print "%i resultat(s) de %s :<br>"%(len(res),ta)
+		for id,dateofanalysis in res:
+			print """<button onmouseover=showresult("%s",%i)>%s</button>"""%(ta,id,dateofanalysis)
+		print "<br>"
+	#~ else:
+		#~ print "pas de resultats de %s pour ce patient:<br>"%ta
 #####################
 
 print """<button onclick=resultpatient(%s)>Resultat</button>"""%idp
 print """<button onclick=modifpatient(%s)>update</button>"""%idp
-print """<button onclick=addpatient(%s)>Add</button>"""%idp
 print """<button onclick=deletepatient(%s)>delete</button>"""%idp
