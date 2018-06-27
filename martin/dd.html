@@ -56,6 +56,10 @@ function fichpatient(id) {
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xhttp.send("idp="+id);
 }
+function forcefichpat() {
+	x=document.getElementById("lastrowid").value;
+	fichpatient(x);
+}
 function formaccess() {
 	form=document.getElementById("patientform");
 	var z="";
@@ -67,10 +71,12 @@ function formaccess() {
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
+		//~ alert(this.responseText);
       document.getElementById("se").innerHTML=this.responseText;
+      forcefichpat();
     }
   };
-	xhttp.open("POST", "cgi/report.cgi");
+	xhttp.open("POST", "cgi/registpatient.py");
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xhttp.send(z);
 	return false;
@@ -158,36 +164,36 @@ function immuno_serologie(id) {
 }
 
 
-function addpatient(id) {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("se").innerHTML = this.responseText;
+//~ function addpatient(id) {
+  //~ var xhttp = new XMLHttpRequest();
+  //~ xhttp.onreadystatechange = function() {
+    //~ if (this.readyState == 4 && this.status == 200) {
+      //~ document.getElementById("se").innerHTML = this.responseText;
       
-    }
-  };
-	xhttp.open("POST", "cgi/addpatient.py", true);
-	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	xhttp.send("idp="+id);
-}
+    //~ }
+  //~ };
+	//~ xhttp.open("POST", "cgi/addpatient.py", true);
+	//~ xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	//~ xhttp.send("idp="+id);
+//~ }
 
 
-function registpatient(id) {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("se").innerHTML = this.responseText;
+//~ function registpatient(id) {
+  //~ var xhttp = new XMLHttpRequest();
+  //~ xhttp.onreadystatechange = function() {
+    //~ if (this.readyState == 4 && this.status == 200) {
+      //~ document.getElementById("se").innerHTML = this.responseText;
       
-    }
-  };
-	xhttp.open("POST", "cgi/registpatient.py", true);
-	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	xhttp.send("idp="+id);
-}
+    //~ }
+  //~ };
+	//~ xhttp.open("POST", "cgi/registpatient.py", true);
+	//~ xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	//~ xhttp.send("idp="+id);
+//~ }
 
 
 function deletepatient(id) {
-	alert("Confirmer la suppression ?");
+	//~ alert("Confirmer la suppression ?");
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -201,19 +207,19 @@ function deletepatient(id) {
 }
 
 
-function modifpatient(id) {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("se").innerHTML =
-      this.responseText;
+//~ function modifpatient(id) {
+  //~ var xhttp = new XMLHttpRequest();
+  //~ xhttp.onreadystatechange = function() {
+    //~ if (this.readyState == 4 && this.status == 200) {
+      //~ document.getElementById("se").innerHTML =
+      //~ this.responseText;
       
-    }
-  };
-	xhttp.open("POST", "cgi/modifpatient.py", true);
-	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	xhttp.send("idp="+id);
-}
+    //~ }
+  //~ };
+	//~ xhttp.open("POST", "cgi/modifpatient.py", true);
+	//~ xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	//~ xhttp.send("idp="+id);
+//~ }
 
 
 
