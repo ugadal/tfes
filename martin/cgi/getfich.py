@@ -44,6 +44,6 @@ for ta in TA:
 		#~ print "pas de resultats de %s pour ce patient:<br>"%ta
 #####################
 
-print """<button onclick=resultpatient(%s)>Resultat</button>"""%idp
-print """<button onclick=modifpatient(%s)>update</button>"""%idp
-print """<button onclick=deletepatient(%s)>delete</button>"""%idp
+print """<button onclick=resultpatient(%s)>introduire un résultat d'analyse</button>"""%idp
+print """<button onclick=modifpatient(%s)>modifier la fiche patient</button>"""%idp
+print """<button onclick=deletepatient(%s)>supprimer ce patient</button>"""%idp

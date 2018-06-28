@@ -103,7 +103,8 @@ function formaccess2(id) {
 	return false;
 }
 
-//~ function resultpatient(id) {
+function resultpatient(id) {
+	alert("fonction non définie, elle servira à encoder de nouvelles analyses, mettre dans se les boutons selon le type d'analyse");
   //~ var xhttp = new XMLHttpRequest();
   //~ xhttp.onreadystatechange = function() {
     //~ if (this.readyState == 4 && this.status == 200) {
@@ -114,19 +115,19 @@ function formaccess2(id) {
 	//~ xhttp.open("POST", "cgi/resultpatient.py", true);
 	//~ xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	//~ xhttp.send("idp="+id);
-//~ }
-function showresult(table,idanalysis) {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("se").innerHTML = this.responseText;
-      
-    }
-  };
-	xhttp.open("POST", "cgi/showanalysis.py", true);
-	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	xhttp.send("table="+table+"&idanalysis="+idanalysis);
 }
+//~ function showresult(table,idanalysis) {
+  //~ var xhttp = new XMLHttpRequest();
+  //~ xhttp.onreadystatechange = function() {
+    //~ if (this.readyState == 4 && this.status == 200) {
+      //~ document.getElementById("se").innerHTML = this.responseText;
+      
+    //~ }
+  //~ };
+	//~ xhttp.open("POST", "cgi/showanalysis.py", true);
+	//~ xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	//~ xhttp.send("table="+table+"&idanalysis="+idanalysis);
+//~ }
 
 
 function biochimie(id) {

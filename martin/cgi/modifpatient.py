@@ -16,32 +16,32 @@ d.append(idp)
 d=tuple(d)
 print "Content-type:text/html"
 print
-print d
+#~ print d
 print """
-<form id="patientform" onsubmit="return formaccess2(%i);">> 
+<form id="patientform" onsubmit="return formaccess2(%i);">
 
 <fieldset>
-                <input  type="text"  id="patientnom" name="nom" placeholder="Nom du patient" value=%s maxlength="32" required >
-                <input  type="text"  id="patientprenom" name="prenom" placeholder="Prenom" aria-label="prenom" value=%s maxlength="32"  required>
+                <input  type="text"  id="patientnom" name="nom" placeholder="Nom du patient" value="%s" maxlength="32" required >
+                <input  type="text"  id="patientprenom" name="prenom" placeholder="Prenom" aria-label="prenom" value="%s" maxlength="32"  required>
                  
-                 <select type="select" name="sexe" value=%s required>
+                 <select type="select" name="sexe" value="%s" required>
                  <option value="Sexe" selected disabled>Sexe du patient</option>
                  <option value="F">Feminin</option>
                  <option value="M">Masculin</option>
                  </select>
-                 <input type="tel" pattern="[0-9-() ]*" name="age"   value=%s  required role="textbox" aria-multiline="false" placeholder="Age" aria-label="age"  minlength="1" maxlength="3">
+                 <input type="tel" pattern="[0-9-() ]*" name="age"   value="%s"  required role="textbox" aria-multiline="false" placeholder="Age" aria-label="age"  minlength="1" maxlength="3">
                 <br/>
  </fieldset>
  
  <fieldset>
-	<input type="text" name="ville" value=%s placeholder="ville" required>		
-	<input type="text" name="quartier" value=%s placeholder="Quartier" required>
-	<input type="text" name="tel" value=%s placeholder="Telephone"><br/>
+	<input type="text" name="ville" value="%s" placeholder="ville" required>		
+	<input type="text" name="quartier" value="%s" placeholder="Quartier" required>
+	<input type="text" name="tel" value="%s" placeholder="Telephone"><br/>
  </fieldset> 
 
 
 <input type="text" name="email"  id="usernamereg-yid" placeholder="Adresse mail"
-            aria-label="Adresse mail" value=%s maxlength="32"   ><br/><br/>
+            aria-label="Adresse mail" value="%s" maxlength="32"   ><br/><br/>
        
        <button>Enregistrer</button>   
 <input type=hidden name=idpatient value=%s>     
