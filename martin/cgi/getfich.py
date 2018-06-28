@@ -36,7 +36,8 @@ for ta in TA:
 	c.execute(cmd)
 	res=c.fetchall()
 	if res:
-		print "%i resultat(s) de %s :<br>"%(len(res),ta)
+		#~ print "%i resultat(s) de %s :<br>"%(len(res),ta)
+		print "%i resultat(s) de %s :"%(len(res),ta)
 		for id,dateofanalysis in res:
 			print """<button onmouseover=showresult("%s",%i)>%s</button>"""%(ta,id,dateofanalysis)
 		print "<br>"
