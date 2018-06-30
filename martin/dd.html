@@ -64,9 +64,10 @@ function formaccess() {
 	form=document.getElementById("patientform");
 	var z="";
 	for (i=0;i<form.length;i++) {
-		w=form.elements[i].name;
-		v=form.elements[i].value;
-		z+="&"+w+"="+v;
+		te=form.elements[i];
+		w=te.name;
+		v=te.value;
+		if (te.type!="radio" || te.checked ) {z+="&"+w+"="+v;}
 	}
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
