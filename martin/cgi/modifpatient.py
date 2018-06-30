@@ -21,15 +21,31 @@ print """
 <form id="patientform" onsubmit="return formaccess2(%i);">
 
 <fieldset>
-                <input  type="text"  id="patientnom" name="nom" placeholder="Nom du patient" value="%s" maxlength="32" required >
-                <input  type="text"  id="patientprenom" name="prenom" placeholder="Prenom" aria-label="prenom" value="%s" maxlength="32"  required>
-                 
-                 <select type="select" name="sexe" value="%s" required>
-                 <option value="Sexe" selected disabled>Sexe du patient</option>
-                 <option value="F">Feminin</option>
-                 <option value="M">Masculin</option>
-                 </select>
-                 <input type="tel" pattern="[0-9-() ]*" name="age"   value="%s"  required role="textbox" aria-multiline="false" placeholder="Age" aria-label="age"  minlength="1" maxlength="3">
+<input  type="text"  id="patientnom" name="nom" placeholder="Nom du patient" value="%s" maxlength="32" required >
+<input  type="text"  id="patientprenom" name="prenom" placeholder="Prenom" aria-label="prenom" value="%s" maxlength="32"  required>
+"""%d[:3]
+sexp=d[3]
+#~ print "sexp",sexp
+if sexp=="F":
+	checkF=" checked "
+	checkM=""
+else:
+	checkM=" checked "
+	checkF=""
+	
+print """
+<input type=radio 
+	name=sexe
+	value=F
+	%s
+>femme
+<input type=radio 
+	name=sexe
+	value=M
+	%s
+>homme<br>"""%(checkF,checkM)
+print """
+<input type="tel" pattern="[0-9-() ]*" name="age"   value="%s"  required role="textbox" aria-multiline="false" placeholder="Age" aria-label="age"  minlength="1" maxlength="3">
                 <br/>
  </fieldset>
  
@@ -46,4 +62,4 @@ print """
        <button>Enregistrer</button>   
 <input type=hidden name=idpatient value=%s>     
 </form>
-"""%d
+"""%d[4:]
