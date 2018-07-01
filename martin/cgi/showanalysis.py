@@ -19,5 +19,12 @@ print
 cmd="""select * from %s where id = %s"""%(table,ida)
 #~ print cmd,table,ida
 c.execute(cmd)
-print c.fetchall()[0]
+cn=zip(*c.description)[0] #nom des colonnes
+#print cn
+r=c.fetchone()
+#print r
+for k,v in zip(cn[2:],r[2:]):
+    print k,v,"<br>"
+#print c.fetchall()[0]
+
 #~ for row in  c.fetchall():mab(row)
