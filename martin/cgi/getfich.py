@@ -32,14 +32,14 @@ print "</table>"
 TA=["biochimie","bacteriologie","hemato_parasitologie","immuno_serologie"]
 
 for ta in TA:
-	cmd="""select id,date from %s where ID_patient= %s order by date desc"""%(ta,idp)
+	cmd="""select id,date,type_examen from %s where ID_patient= %s order by date desc"""%(ta,idp)
 	c.execute(cmd)
 	res=c.fetchall()
 	if res:
 		#~ print "%i resultat(s) de %s :<br>"%(len(res),ta)
 		print "%i resultat(s) de %s :"%(len(res),ta)
-		for id,dateofanalysis in res:
-			print """<button onmouseover=showresult("%s",%i)>%s</button>"""%(ta,id,dateofanalysis)
+		for id,dateofanalysis,te in res:
+			print """<button onmouseover=showresult("%s",%i)>%s(%s)</button>"""%(ta,id,dateofanalysis,te)
 		print "<br>"
 	#~ else:
 		#~ print "pas de resultats de %s pour ce patient:<br>"%ta
