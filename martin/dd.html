@@ -74,6 +74,7 @@ function formaccess() {
     if (this.readyState == 4 && this.status == 200) {
 		//~ alert(this.responseText);
       document.getElementById("se").innerHTML=this.responseText;
+      loadpatients();
       forcefichpat();
     }
   };
@@ -97,6 +98,7 @@ function formaccess2(id) {
     if (this.readyState == 4 && this.status == 200) {
 		//~ alert(this.responseText);
       document.getElementById("se").innerHTML=this.responseText;
+      //loadpatients();
       fichpatient(id);
     }
   };
