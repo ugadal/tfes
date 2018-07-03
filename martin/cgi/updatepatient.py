@@ -1,5 +1,5 @@
 #!/usr/bin/python
-import cgi
+from ft import *
 print "Content-type:text/html"
 print
 
@@ -13,11 +13,7 @@ ville=str(dataform.getvalue("ville"))
 quartier=str(dataform.getvalue("quartier"))
 tel=str(dataform.getvalue("tel"))
 email=str(dataform.getvalue("email"))
-import sqlite3
-C = sqlite3.connect('db/impm.db')
-c = C.cursor()
 cmd="""update patient set dn="%s" , nom="%s" , prenom="%s", sexe="%s", ville="%s", quartier="%s", tel="%s", email="%s" where id=%s"""%(dn,nom,prenom,sexe,ville,quartier,tel,email,thisid)
 print cmd
 c.execute(cmd)
 C.commit()
-exit()

@@ -1,11 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-
-import cgi
-import sqlite3 as sql
-C=sql.connect("db/impm.db")
-c=C.cursor()
+from ft import *
 f=cgi.FieldStorage()
 idp=f.getvalue("idp")
 cmd="""select * from patient where id=%s"""%idp
