@@ -143,6 +143,7 @@ function deletepatient(id) {
     if (this.readyState == 4 && this.status == 200) {
       document.getElementById("selectedpatient").innerHTML = "deleted"
       loadpatients();
+      cleandiv("fichpatient");
     }
   };
 	xhttp.open("POST", "cgi/delpatient.py", true);
