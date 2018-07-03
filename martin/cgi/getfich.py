@@ -1,9 +1,6 @@
 #!/usr/bin/python2
 # -*- coding: utf-8 -*-
-import cgi
-import sqlite3 as sql
-C=sql.connect("db/impm.db")
-c=C.cursor()
+from ft import *
 f=cgi.FieldStorage()
 idp=f.getvalue("idp")
 print "Content-type:text/html"
@@ -11,8 +8,13 @@ print
 #~ print idp
 
 
+<<<<<<< HEAD
 #~ li1=["id","nom","prenom","sexe","age","ville","quartier","tel","email"]
 li1=["nom","prenom","sexe","age","ville","quartier","tel","email"]
+=======
+li1=["id","nom","prenom","sexe","dn","ville","quartier","tel","email"]
+li1=["nom","prenom","sexe","dn","ville","quartier","tel","email"]
+>>>>>>> 221c34a8a4c2ba4d72537bb16e4825971fdf0f64
 c.execute("""SELECT * from patient where id=?""",(idp,))
 b=c.fetchall()[0]
 

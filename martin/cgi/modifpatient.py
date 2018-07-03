@@ -1,11 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-
-import cgi
-import sqlite3 as sql
-C=sql.connect("db/impm.db")
-c=C.cursor()
+from ft import *
 f=cgi.FieldStorage()
 idp=f.getvalue("idp")
 cmd="""select * from patient where id=%s"""%idp
@@ -45,7 +41,7 @@ print """
 	%s
 >homme<br>"""%(checkF,checkM)
 print """
-<input type="tel" pattern="[0-9-() ]*" name="age"   value="%s"  required role="textbox" aria-multiline="false" placeholder="Age" aria-label="age"  minlength="1" maxlength="3">
+<input type=date name=dn   value="%s">
                 <br/>
  </fieldset>
  
