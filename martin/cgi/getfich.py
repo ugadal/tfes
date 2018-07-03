@@ -11,8 +11,8 @@ print
 #~ print idp
 
 
-li1=["id","nom","prenom","sexe","age","ville","quartier","tel","email"]
-li1=["nom","prenom","sexe","age","ville","quartier","tel","email"]
+li1=["id","nom","prenom","sexe","dn","ville","quartier","tel","email"]
+li1=["nom","prenom","sexe","dn","ville","quartier","tel","email"]
 c.execute("""SELECT * from patient where id=?""",(idp,))
 b=c.fetchall()[0]
 

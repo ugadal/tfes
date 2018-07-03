@@ -45,7 +45,7 @@ print """
 	%s
 >homme<br>"""%(checkF,checkM)
 print """
-<input type="tel" pattern="[0-9-() ]*" name="age"   value="%s"  required role="textbox" aria-multiline="false" placeholder="Age" aria-label="age"  minlength="1" maxlength="3">
+<input type=date name=dn   value="%s">
                 <br/>
  </fieldset>
  
