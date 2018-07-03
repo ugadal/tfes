@@ -135,6 +135,22 @@ function showresult(table,idanalysis) {
 }
 
 
+function deleteresult(table,ida) {
+	alert("Bonjour la suppression");
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("se").innerHTML = "deleted"
+      loadpatients();
+      
+    }
+  };
+	xhttp.open("POST", "cgi/deleteresult.py", true);
+	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhttp.send("ida="+ida+"&ida="+ida);
+}
+
+
 function biochimie(id) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {

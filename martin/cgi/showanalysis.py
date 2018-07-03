@@ -20,11 +20,19 @@ cmd="""select * from %s where id = %s"""%(table,ida)
 #~ print cmd,table,ida
 c.execute(cmd)
 cn=zip(*c.description)[0] #nom des colonnes
-#print cn
+#~ print cn
 r=c.fetchone()
-#print r
+#~ idr=r[0]  # id du resultat
+#~ print idr
+#~ print r
+
+print "<table border=1 cellspacing=5 cellpadding=1>"
+print "<tr>"
 for k,v in zip(cn[2:],r[2:]):
-    print k,v,"<br>"
+    print "<th style='background-color:powderblue;'>",k,"</th>","<td style='background-color:#F8E6E0;'>",v,"</td>","</tr>"
+    
+print "</table><br/>"
+print """<button onclick=deleteresult(%s,%s)>supprimer ce resultat</button>"""%(table,ida)
 #print c.fetchall()[0]
 
 #~ for row in  c.fetchall():mab(row)
