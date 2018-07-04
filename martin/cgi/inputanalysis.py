@@ -39,4 +39,4 @@ print
 <div id=formdiv>
 </div>
 </body>
-"""%idp
+"""
