@@ -37,12 +37,14 @@ for ta in TA:
 	cmd="""select id,date,type_examen from %s where ID_patient= %s order by date desc"""%(ta,idp)
 	c.execute(cmd)
 	res=c.fetchall()
+	print "<table border=1 cellspacing=1 cellpadding=1><tr>"
 	if res:
 		#~ print "%i resultat(s) de %s :<br>"%(len(res),ta)
-		print "%i resultat(s) de %s :"%(len(res),ta)
+		print "<td>%i resultat(s) de %s </td>"%(len(res),ta)
 		for id,dateofanalysis,te in res:
-			print """<button onmouseover=showresult("%s","%s",%i)>%s(%s)</button>"""%(idp,ta,id,dateofanalysis,te)
-		print "<br>"
+			print """<td><button onmouseover=showresult("%s","%s",%i)>%s(%s)</button></td>"""%(idp,ta,id,dateofanalysis,te)
+	print "</tr></table>"
+print "<br>"
 	#~ else:
 		#~ print "pas de resultats de %s pour ce patient:<br>"%ta
 #####################
@@ -50,6 +52,6 @@ for ta in TA:
 print """<form name=inputanalysis action=cgi/inputanalysis.py>
 <input type=hidden name=idp value=%s>
 <input type=submit value="introduire des resultats d'analyse pour ce patient">
-</form>"""%idp
+</form><hr/>"""%idp
 print """<button onclick=modifpatient(%s)>modifier la fiche patient</button>"""%idp
 print """<button onclick=deletepatient(%s)>supprimer ce patient</button>"""%idp
