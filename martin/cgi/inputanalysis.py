@@ -16,7 +16,6 @@ function fichpatient(id) {
     if (this.readyState == 4 && this.status == 200) {
       document.getElementById("fp").innerHTML =
       this.responseText;
-      cleandiv("se");
     }
   };
 	xhttp.open("POST", "getfich2.py", true);
@@ -33,10 +32,10 @@ print """
 c.execute("select distinct cp from TA")
 for c in c.fetchall():
 	print """<input type=button onclick="auboulot()" value=%s>"""%c
-print 
-"""
+print """
 </div>
 <div id=formdiv>
 </div>
 </body>
 """
+print "<hr>"
