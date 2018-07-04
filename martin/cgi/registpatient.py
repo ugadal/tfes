@@ -11,8 +11,8 @@ ville=str(dataform.getvalue("ville"))
 quartier=str(dataform.getvalue("quartier"))
 tel=str(dataform.getvalue("tel"))
 email=str(dataform.getvalue("email"))
-c.execute ("""insert into patient (nom,prenom,sexe,dn,ville,quartier,tel,email) 
-VALUES(?,?,?,?,?,?,?,?)""", (nom,prenom,sexe,dn,ville,quartier,tel,email))
+cmd="""insert into patient (nom,prenom,sexe,dn,ville,quartier,tel,email) values("%s","%s","%s","%s","%s","%s","%s","%s")"""%(nom,prenom,sexe,dn,ville,quartier,tel,email) 
+c.execute(cmd)
 C.commit()
 thisid=c.lastrowid
 print thisid

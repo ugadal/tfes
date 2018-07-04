@@ -149,91 +149,6 @@ function deleteresult(idp,table,ida) {
 	xhttp.send("table="+table+"&ida="+ida);
 }
 
-
-function biochimie(id) {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("se").innerHTML = this.responseText;
-      
-    }
-  };
-	xhttp.open("POST", "cgi/biochimie.py", true);
-	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	xhttp.send("idp="+id);
-}
-
-
-function bacteriologie(id) {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("se").innerHTML = this.responseText;
-      
-    }
-  };
-	xhttp.open("POST", "cgi/bacteriologie.py", true);
-	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	xhttp.send("idp="+id);
-}
-
-
-function hemato_parasitologie(id) {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("se").innerHTML = this.responseText;
-      
-    }
-  };
-	xhttp.open("POST", "cgi/hemato_parasitologie.py", true);
-	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	xhttp.send("idp="+id);
-}
-
-
-function immuno_serologie(id) {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("se").innerHTML = this.responseText;
-      
-    }
-  };
-	xhttp.open("POST", "cgi/immuno_serologie.py", true);
-	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	xhttp.send("idp="+id);
-}
-
-
-//~ function addpatient(id) {
-  //~ var xhttp = new XMLHttpRequest();
-  //~ xhttp.onreadystatechange = function() {
-    //~ if (this.readyState == 4 && this.status == 200) {
-      //~ document.getElementById("se").innerHTML = this.responseText;
-      
-    //~ }
-  //~ };
-	//~ xhttp.open("POST", "cgi/addpatient.py", true);
-	//~ xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	//~ xhttp.send("idp="+id);
-//~ }
-
-
-//~ function registpatient(id) {
-  //~ var xhttp = new XMLHttpRequest();
-  //~ xhttp.onreadystatechange = function() {
-    //~ if (this.readyState == 4 && this.status == 200) {
-      //~ document.getElementById("se").innerHTML = this.responseText;
-      
-    //~ }
-  //~ };
-	//~ xhttp.open("POST", "cgi/registpatient.py", true);
-	//~ xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	//~ xhttp.send("idp="+id);
-//~ }
-
-
 function deletepatient(id) {
 	//~ alert("Confirmer la suppression ?");
   var xhttp = new XMLHttpRequest();
@@ -249,7 +164,6 @@ function deletepatient(id) {
 	xhttp.send("idp="+id);
 }
 
-
 function modifpatient(id) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
@@ -263,8 +177,5 @@ function modifpatient(id) {
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xhttp.send("idp="+id);
 }
-
-
-
 
 </script>
