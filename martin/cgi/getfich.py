@@ -8,13 +8,13 @@ print
 #~ print idp
 
 
-<<<<<<< HEAD
+#~ <<<<<<< HEAD
 #~ li1=["id","nom","prenom","sexe","age","ville","quartier","tel","email"]
 li1=["nom","prenom","sexe","age","ville","quartier","tel","email"]
-=======
+#~ =======
 li1=["id","nom","prenom","sexe","dn","ville","quartier","tel","email"]
 li1=["nom","prenom","sexe","dn","ville","quartier","tel","email"]
->>>>>>> 221c34a8a4c2ba4d72537bb16e4825971fdf0f64
+#~ >>>>>>> 221c34a8a4c2ba4d72537bb16e4825971fdf0f64
 c.execute("""SELECT * from patient where id=?""",(idp,))
 b=c.fetchall()[0]
 
@@ -41,7 +41,7 @@ for ta in TA:
 		#~ print "%i resultat(s) de %s :<br>"%(len(res),ta)
 		print "%i resultat(s) de %s :"%(len(res),ta)
 		for id,dateofanalysis,te in res:
-			print """<button onmouseover=showresult("%s",%i)>%s(%s)</button>"""%(ta,id,dateofanalysis,te)
+			print """<button onmouseover=showresult("%s","%s",%i)>%s(%s)</button>"""%(idp,ta,id,dateofanalysis,te)
 		print "<br>"
 	#~ else:
 		#~ print "pas de resultats de %s pour ce patient:<br>"%ta

@@ -121,7 +121,7 @@ function resultpatient(id) {
 	//~ xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	//~ xhttp.send("idp="+id);
 }
-function showresult(table,idanalysis) {
+function showresult(idp,table,idanalysis) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -131,24 +131,22 @@ function showresult(table,idanalysis) {
   };
 	xhttp.open("POST", "cgi/showanalysis.py", true);
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	xhttp.send("table="+table+"&idanalysis="+idanalysis);
+	xhttp.send("idp="+idp+"&table="+table+"&idanalysis="+idanalysis);
 }
 
 
-<<<<<<< HEAD
-function deleteresult(table,ida) {
-	alert("Bonjour la suppression");
+function deleteresult(idp,table,ida) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       document.getElementById("se").innerHTML = "deleted"
-      loadpatients();
-      
+      //~ loadpatients();
+      fichpatient(idp);
     }
   };
 	xhttp.open("POST", "cgi/deleteresult.py", true);
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	xhttp.send("ida="+ida+"&ida="+ida);
+	xhttp.send("table="+table+"&ida="+ida);
 }
 
 
@@ -235,8 +233,6 @@ function immuno_serologie(id) {
 	//~ xhttp.send("idp="+id);
 //~ }
 
-=======
->>>>>>> 221c34a8a4c2ba4d72537bb16e4825971fdf0f64
 
 function deletepatient(id) {
 	//~ alert("Confirmer la suppression ?");
