@@ -22,6 +22,7 @@ r=c.fetchone()
 print "<table border=1 cellspacing=5 cellpadding=1>"
 print "<tr>"
 for k,v in zip(cn[2:],r[2:]):
+    if mpa.has_key(k):k=mpa[k]
     print "<th style='background-color:powderblue;'>",k,"</th>","<td style='background-color:#F8E6E0;'>",v,"</td>","</tr>"
     
 print "</table><br/>"
