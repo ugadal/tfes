@@ -28,7 +28,7 @@ for f,v in zip(li1,b[1:]):
 			</tr>"""%(f,v)
 	
 print "</table>"	
-
+exit()
 
 #####################
 TA=["biochimie","bacteriologie","hemato_parasitologie","immuno_serologie"]
