@@ -40,7 +40,7 @@ for ta in TA:
 	print "<table border=1 cellspacing=1 cellpadding=1><tr>"
 	if res:
 		#~ print "%i resultat(s) de %s :<br>"%(len(res),ta)
-		print "<td>%i resultat(s) de %s </td>"%(len(res),ta)
+		print """<td style='background-color:#F781BE;'>%i resultat(s) de %s </td>"""%(len(res),ta)
 		for id,dateofanalysis,te in res:
 			print """<td><button onmouseover=showresult("%s","%s",%i)>%s(%s)</button></td>"""%(idp,ta,id,dateofanalysis,te)
 	print "</tr></table>"
