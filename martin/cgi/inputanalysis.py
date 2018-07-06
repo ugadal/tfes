@@ -33,8 +33,10 @@ print """
 <input type=hidden idp=%s>
 """%(idp)
 c.execute("select distinct cp from TA")
+i=1
 for c in c.fetchall():
-	print """<input type="button" onclick="addexam()" value="%s">"""%c
+	c=c[0]
+	print """<input type="button" onclick="addexam_%s()" value="%s">"""%(i,c)
 	#~ print """<input type=hidden name=exam value=%s> """%c
 	#
 	#
@@ -47,26 +49,25 @@ for c in c.fetchall():
 		#~ tu as mis des categories primaires et secondaire mais pas de mesure
 		#~ le type d'input a été change en integer ? pourquoi ?
 	
-	#~ print """<script>
-	#~ function addexam() {
-		#~ var btn = document.querySelector('input');
-		#~ var exam=btn.value
-		#~ alert("%s");
-	  #~ var xhttp = new XMLHttpRequest();
-	  #~ xhttp.onreadystatechange = function() {
-		#~ if (this.readyState == 4 && this.status == 200) {
-		  #~ document.getElementById("formdiv").innerHTML =
-		  #~ this.responseText;
-		  #~ alert(this.responseText);
-		#~ }
-	  #~ };
-		#~ xhttp.open("POST", "addexam.py", true);
-		#~ xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-		#~ xhttp.send("exam="+exam);
-	#~ }
+	print """<script>
+	function addexam_%s() {
+		var btn = document.querySelector('input');
+		var exam=btn.value;
+	  var xhttp = new XMLHttpRequest();
+	  xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+		  document.getElementById("formdiv").innerHTML =
+		  this.responseText;
+		}
+	  };
+		xhttp.open("POST", "addexam.py", true);
+		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xhttp.send("exam="+"%s"+"&idp="+%s);
+	}
 
-	#~ </script>
-	#~ """%c
+	</script>
+	"""%(i,c,idp)
+	i+=1
 
 print """
 </div>
