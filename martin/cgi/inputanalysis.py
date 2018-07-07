@@ -74,7 +74,7 @@ for c in c.fetchall():
 print """	
 	<style type="text/css">
 div{position: absolute; padding: 1em; border: 1px solid #000}
-#examens{background: #BFFF00; top: 0; left: 0; right: 60%; border: 5px solid; bottom: 75%;overflow:auto}
+#examens{background: #FF0040; top: 0; left: 0; right: 60%; border: 5px solid; bottom: 75%;overflow:auto}
 #fp{background: #F7BE81; top: 25%; left: 0%; right: 63%; bottom: 0;}
 #analyse{background: #A9D0F5; top: 0; left: 37%; right: 0; bottom: 50%;overflow:auto}
 #formdiv{background: #F4FA58; top: 50%; left: 37%; right: 0;overflow:auto}
