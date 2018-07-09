@@ -54,4 +54,4 @@ print """<form name=inputanalysis action=cgi/inputanalysis.py>
 <input type=submit value="introduire des resultats d'analyse pour ce patient">
 </form><hr/>"""%idp
 print """<button onclick=modifpatient(%s)>modifier la fiche patient</button>"""%idp
-print """<button onclick=deletepatient(%s)>supprimer ce patient</button><br/>"""%idp
+print """<button onclick=deletepatient(%s)>supprimer ce patient</button><br/><br/>"""%idp

@@ -1,14 +1,14 @@
 <h2>Introduir un nouveau patient</h2>
 
 <meta charset="UTF-8">
-<form id="patientform" onsubmit="return formaccess();">> 
+<form id="patientform" onsubmit="return formaccess();"> 
 
  <fieldset>
                 <input  type="text"  id="patientnom" name="nom" placeholder="Nom du patient" value="" maxlength="32" required >
                 <input  type="text"  id="patientprenom" name="prenom" placeholder="Prenom" aria-label="prenom" value="" maxlength="32"  required>
                  
 		 <input type=radio name=sexe value=M>Homme<input type=radio name=sexe value=F>femme<br>
-		 <input type=date name=dn>date de naissance<br>
+		 <input type="date" name=dn value="2018-07-22" required> date de naissance<br>
                 <br/>
  </fieldset>
  

@@ -6,7 +6,6 @@ f=cgi.FieldStorage()
 idp=f.getvalue("idp")
 print "Content-type:text/html"
 print
-#~ print "ok"
 print """<html>
 <body onload=fichpatient(%s)>
 <script>
@@ -37,19 +36,7 @@ c.execute("select distinct cp from TA")
 i=1
 for c in c.fetchall():
 	c=c[0]
-	print """<input type="button" onclick="addexam_%s()" value="%s" id="examens">"""%(i,c)
-	#~ print """<input type=hidden name=exam value=%s> """%c
-	#
-	#
-	# CA NE VA PAS CA
-	# tu recrees une fonction addexam() et un hidden à chaque fois ! (car dans la boucle)
-	# si tu as besoin d'une fonction tu dois l"inserer au niveau de la ligne 25
-	#
-	#~ deuxio:
-		#~ qu'est ce que tu as mis dans la table TA ?
-		#~ tu as mis des categories primaires et secondaire mais pas de mesure
-		#~ le type d'input a été change en integer ? pourquoi ?
-	
+	print """<input type="button" onclick="addexam_%s()" value="%s" id="examens">"""%(i,c)	
 	print """<script>
 	function addexam_%s() {
 		var btn = document.querySelector('input');
@@ -69,6 +56,48 @@ for c in c.fetchall():
 	</script>
 	"""%(i,c,idp)
 	i+=1
+	
+print """<script>
+function examform() {
+	form=document.getElementById("examform");
+	var z="";
+	for (i=0;i<form.length;i++) {
+		te=form.elements[i];
+		w=te.name;
+		v=te.value;
+		if (te.type!="radio" || te.checked ) {z+="&"+w+"="+v;}
+	}
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+		//~ alert(this.responseText);
+      document.getElementById("formdiv").innerHTML=this.responseText;
+      loadpatients();
+      forcefichpat();
+    }
+  };
+	xhttp.open("POST", "examform.py");
+	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhttp.send(z);
+	return false;
+}
+
+function deleteresult(ID_patient,exam,thisid) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("formdiv").innerHTML = "deleted"
+      //~ loadpatients();
+      examform();
+    }
+  };
+	xhttp.open("POST", "deleteresult.py", true);
+	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhttp.send("table="+exam+"&ida="+thisid);
+}
+
+</script>
+"""
 
 #############################################################################################################
 print """	

@@ -8,13 +8,7 @@ print
 #~ print idp
 
 
-#~ <<<<<<< HEAD
-#~ li1=["id","nom","prenom","sexe","age","ville","quartier","tel","email"]
-li1=["nom","prenom","sexe","age","ville","quartier","tel","email"]
-#~ =======
-li1=["id","nom","prenom","sexe","dn","ville","quartier","tel","email"]
 li1=["nom","prenom","sexe","dn","ville","quartier","tel","email"]
-#~ >>>>>>> 221c34a8a4c2ba4d72537bb16e4825971fdf0f64
 c.execute("""SELECT * from patient where id=?""",(idp,))
 b=c.fetchall()[0]
 
@@ -25,10 +19,13 @@ for f,v in zip(li1,b[1:]):
 	print """<tr>
 			<th style="background-color:powderblue;">%s</th>
 			<td style="background-color:#00FF80;">%s</td>
-			</tr>"""%(f,v)
+			</tr>"""%(f,v)	
+print "</table><br><br>"
+print """<h1><a href='../dd.html'>Cliquez ici pour repartir a la page d'accueil</a></h1>"""
 	
-print "</table>"	
 exit()
+
+
 
 #####################
 TA=["biochimie","bacteriologie","hemato_parasitologie","immuno_serologie"]
