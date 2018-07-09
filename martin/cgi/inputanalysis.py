@@ -9,6 +9,10 @@ print
 print """<html>
 <body onload=fichpatient(%s)>
 <script>
+function cleandiv(namediv) {
+	document.getElementById(namediv).innerHTML =""
+}
+
 function fichpatient(id) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
@@ -46,6 +50,7 @@ for c in c.fetchall():
 		if (this.readyState == 4 && this.status == 200) {
 		  document.getElementById("analyse").innerHTML =
 		  this.responseText;
+		  cleandiv("formdiv");
 		}
 	  };
 		xhttp.open("POST", "addexam.py", true);
@@ -82,20 +87,6 @@ function examform() {
 	return false;
 }
 
-function deleteresult(ID_patient,exam,thisid) {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("formdiv").innerHTML = "deleted"
-      //~ loadpatients();
-      examform();
-    }
-  };
-	xhttp.open("POST", "deleteresult.py", true);
-	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	xhttp.send("table="+exam+"&ida="+thisid);
-}
-
 </script>
 """
 
@@ -105,11 +96,9 @@ print """
 div{position: absolute; padding: 1em; border: 1px solid #000}
 #examens{background: #FF0040; top: 0; left: 0; right: 60%; border: 5px solid; bottom: 75%;overflow:auto}
 #fp{background: #F7BE81; top: 25%; left: 0%; right: 63%; bottom: 0;}
-#analyse{background: #A9D0F5; top: 0; left: 37%; right: 0; bottom: 50%;overflow:auto}
-#formdiv{background: #F4FA58; top: 50%; left: 37%; right: 0;overflow:auto}
-</style>
-	
-	
+#analyse{background: #A9D0F5; top: 0; left: 37%; right: 0; bottom: 35%;overflow:auto}
+#formdiv{background: #F4FA58; top: 65%; left: 37%; right: 0;overflow:auto}
+</style>	
 """
 
 

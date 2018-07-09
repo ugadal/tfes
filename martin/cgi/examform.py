@@ -37,6 +37,7 @@ if exam=="biochimie":
 	c.execute(cmd)
 	C.commit()
 	thisid=c.lastrowid
+	print "<h2>Resultat de: %s </h2>"%exam
 	print "<h3>Vos donnees ont bien ete enregistre!</h3>"
 	
 	cmd="""select * from %s where id = %s"""%(exam,thisid)
@@ -82,6 +83,7 @@ elif exam=="bacteriologie":
 	c.execute(cmd)
 	C.commit()
 	thisid=c.lastrowid
+	print "<h2>Resultat de: %s </h2>"%exam
 	print "<h3>Vos donnees ont bien ete enregistre!</h3>"
 	cmd="""select * from %s where id = %s"""%(exam,thisid)
 	c.execute(cmd)
@@ -128,6 +130,7 @@ elif exam=="hemato_parasitologie":
 	c.execute(cmd)
 	C.commit()
 	thisid=c.lastrowid
+	print "<h2>Resultat de: %s </h2>"%exam
 	print "<h3>Vos donnees ont bien ete enregistre!</h3>"
 	cmd="""select * from %s where id = %s"""%(exam,thisid)
 	c.execute(cmd)
@@ -173,6 +176,7 @@ elif exam=="immuno_serologie":
 	c.execute(cmd)
 	C.commit()
 	thisid=c.lastrowid
+	print "<h2>Resultat de: %s </h2>"%exam
 	print "<h3>Vos donnees ont bien ete enregistre!</h3>"
 	cmd="""select * from %s where id = %s"""%(exam,thisid)
 	c.execute(cmd)
