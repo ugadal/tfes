@@ -10,8 +10,8 @@ print "Content-type:text/html"
 print
 
 
-print "<H2>Type d'examen: <b>%s</b></H2><hr/>"%exam
-print "<h3>Introduisez vos resultats ici:</h3>"
+print "<H2><i>Fiche de paillase de  </i>: <b>%s</b></H2><hr/>"%exam
+print "<h3>Introduisez vos resultats d'analyse(s) ici:</h3>"
 print """<form id="examform" onsubmit="return examform(%s);">  """%ID_patient
 ete=[]
 c.execute("pragma table_info(%s);"%exam)
