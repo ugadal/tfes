@@ -12,7 +12,7 @@ print
 
 print """<H2><font color="#610B0B"><i>Fiche de paillase de : </i></font> <b>%s</b></H2><hr/>"""%exam
 print """<h3><font color="#B40404">Introduisez vos resultats d'analyse(s) ici:</font></h3>"""
-print """<form id="examform" onsubmit="return examform(%s);">  """%ID_patient
+print """<form id="examform" onsubmit="return examform();">  """
 print """<b>Date:</b> <input type="date" name="date" required value="" placeholder="2018-07-22"> <br/>"""
 
 
