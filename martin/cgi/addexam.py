@@ -29,7 +29,7 @@ for i in c:
 		else:
 			print """ <input type="radio" name="%s" id="%s" value="%s">"""%(i[2],i[2],i[5])
 			print """<label for="%s"> %s</label><br/>"""%(i[2],i[5])
-			if z>i[4]:
+			if z==(i[4]+1):
 				z=0
 			else:
 				z=z

@@ -118,15 +118,15 @@ elif exam=="hemato_parasitologie":
 	tp=dataform.getvalue("tp")
 	tca=dataform.getvalue("tca")
 	ts=dataform.getvalue("ts")
-	tx_reticul=dataform.getvalue("tx")
-	ge=dataform.getvalue("ge")
+	tx_reticul=dataform.getvalue("tx_reticul")
+	goutte_ep=dataform.getvalue("goutte_ep")
 	nb=dataform.getvalue("nb")
 	selle=dataform.getvalue("selle")
 	microfilaire=dataform.getvalue("microfilaire")
 	autre=str(dataform.getvalue("autre"))
 	cmd="""INSERT INTO hemato_parasitologie(ID_patient,type_examen,date,gs,rhesus,vs,tp,tca,ts,tx_reticul,goutte_ep,autre,technicien) 
 	VALUES ("%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s","%s");
-	"""%(ID_patient,type_examen,date,gs,rhesus,vs,tp,tca,ts,tx_reticul,ge,autre,technicien)
+	"""%(ID_patient,type_examen,date,gs,rhesus,vs,tp,tca,ts,tx_reticul,goutte_ep,autre,technicien)
 	c.execute(cmd)
 	C.commit()
 	thisid=c.lastrowid
