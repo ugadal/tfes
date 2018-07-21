@@ -36,7 +36,8 @@ print """
 """%(idp)
 
 print "<h2>Selectionnez un type d'examen</h2>"
-c.execute("select distinct cp from TA")
+#~ c.execute("select distinct cp from TA")
+c.execute("select distinct nom1 from table_analyse")
 i=1
 for c in c.fetchall():
 	c=c[0]
